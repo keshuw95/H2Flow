@@ -34,10 +34,12 @@ git push -u origin main
   base64), from the paper's NBA flow dump (`exp_figures/data/h2flow_flow_s7.npz`). The hero animation and the live demo
   read it.
 - `static/media/fig_*.webp` — Figs. 1–4 of the paper (from `overleaf/H2Flow_CVPR/figs`).
-- `static/media/<clip>.mp4/.jpg` — six looping clips (flow_steps, hyp_groups, nba_futures, more_plays, soccer,
-  pedestrians) and their posters, cut from the paper's videos; `overview.mp4` — the 2.5 min overview (720p).
+- `static/media/<clip>.mp4/.jpg` — four looping clips (flow_steps, hyp_groups, more_plays, pedestrians) and their
+  posters, cut from the paper's videos; `overview.mp4` — the 2.5 min overview (720p).
 - `static/og.jpg` — link preview (the overview's title card), `static/favicon.svg` — tab icon.
 
 The page was first built as `../project_page/h2flow.html`; this copy adds a full HTML head (description, Open Graph
 tags, icon), moves the assets under `static/`, and adds a `[hidden]` rule that the claude.ai wrapper used to provide.
 The results tables transcribe Tabs. 1–3 of the paper; re-check them whenever those tables change.
+
+Type: Newsreader (headings, wordmark, key numbers), Inter (text and interface), JetBrains Mono (data readouts only).

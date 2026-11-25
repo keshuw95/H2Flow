@@ -22,68 +22,71 @@
 <meta name="twitter:image" content="https://keshuw95.github.io/H2Flow/static/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a night-court hero (always dark) with a tilted live court, then a 70rem reading column of theme-aware bands; paper figures and clips sit on light "print" cards in both themes. */
+/* Layout: a night-court hero (always dark) with a tilted live court, then a 70rem reading column on warm paper; paper figures and clips sit on light "print" cards in both themes.
+   Type: Newsreader (serif) for the wordmark, headings and key numbers; Inter for text and interface; JetBrains Mono only for data readouts. */
 :root {
-  --bg: #F2F4F7;
+  --bg: #F7F6F2;
   --surface: #FFFFFF;
-  --ink: #0E1A2B;
-  --ink-2: #455166;
-  --muted: #6C788B;
-  --rule: #DBE1EA;
-  --chip: #E6EBF2;
+  --ink: #121A27;
+  --ink-2: #4A5363;
+  --muted: #7B818C;
+  --rule: #E3E1DB;
+  --chip: #EFEDE8;
   --accent: #2B66A8;
   --ours: #1F3B63;
   --other: #A7B0BD;
-  --figcard: #F7F8FA;
-  --shadow: 0 1px 2px rgba(14,26,43,.06), 0 12px 34px rgba(14,26,43,.09);
+  --figcard: #FBFAF7;
+  --shadow: 0 1px 2px rgba(18,26,39,.04), 0 10px 30px rgba(18,26,39,.06);
+  --gold: #C2952B;
   --h1: #6B4FBB; --h2: #2E9A6B; --h3: #D9A21B;      /* hypothesis colours of Fig. 1 */
   --night: #08101D;                                /* hero, nav, footer: always dark */
-  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-display: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0A101B; --surface: #111A29; --ink: #E6ECF5; --ink-2: #AEB8C7; --muted: #828DA0; --rule: #223047;
-    --chip: #1A2537; --accent: #84B4EE; --ours: #8DB6EC; --other: #56627A;
+    --chip: #1A2537; --accent: #84B4EE; --ours: #8DB6EC; --other: #56627A; --gold: #E0B653;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 36px rgba(0,0,0,.4);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0A101B; --surface: #111A29; --ink: #E6ECF5; --ink-2: #AEB8C7; --muted: #828DA0; --rule: #223047;
-  --chip: #1A2537; --accent: #84B4EE; --ours: #8DB6EC; --other: #56627A;
+  --chip: #1A2537; --accent: #84B4EE; --ours: #8DB6EC; --other: #56627A; --gold: #E0B653;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 36px rgba(0,0,0,.4);
   color-scheme: dark;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-padding-top: 72px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; font-feature-settings: "cv11", "ss01"; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 40; background: var(--night); }
 a { color: var(--accent); text-underline-offset: 2px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 .wrap { max-width: 70rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-section { padding-block: clamp(3rem, 7vw, 5.5rem); }
-h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -.01em; }
-h2 { font-size: clamp(1.75rem, 3.6vw, 2.5rem); font-weight: 800; font-stretch: 112%; line-height: 1.08; }
-h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
+section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+h1, h2, h3 { font-family: var(--f-serif); text-wrap: balance; margin: 0; letter-spacing: -.012em; font-weight: 500; }
+h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 500; line-height: 1.12; }
+h3 { font-size: 1.22rem; font-weight: 600; line-height: 1.3; }
 p { margin: 0; }
-.eyebrow { font-family: var(--f-display); font-size: .8rem; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .7rem; }
-.eyebrow::before { content: ""; width: 34px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--h1) 0 33%, var(--h2) 33% 66%, var(--h3) 66%); flex: none; }
-.lede { font-size: 1.15rem; color: var(--ink-2); max-width: 42rem; }
-.sec-head { display: grid; gap: .8rem; margin-bottom: 2.2rem; }
+.eyebrow { font-family: var(--f-display); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .75rem; }
+.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); flex: none; }
+.lede { font-size: 1.06rem; color: var(--ink-2); max-width: 40rem; line-height: 1.6; }
+.sec-head { display: grid; gap: .85rem; margin-bottom: 2.4rem; }
 sup.two { font-size: .58em; vertical-align: .62em; line-height: 0; }
 
 /* ---------- nav (always dark glass) */
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(8,16,29,.8); -webkit-backdrop-filter: blur(14px) saturate(150%); backdrop-filter: blur(14px) saturate(150%); border-bottom: 1px solid rgba(255,255,255,.07); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 56px; }
-.brand { font-family: var(--f-display); font-weight: 900; font-stretch: 125%; font-size: 1.15rem; color: #EAF1FF; text-decoration: none; letter-spacing: -.01em; }
+.brand { font-family: var(--f-serif); font-weight: 600; font-size: 1.25rem; color: #EAF1FF; text-decoration: none; letter-spacing: -.01em; }
 .brand sup { color: #F5BE45; font-size: .55em; vertical-align: .7em; line-height: 0; }
 .navlinks { display: flex; gap: .2rem; align-items: center; }
-.navlinks a { font-family: var(--f-display); font-size: .86rem; font-weight: 600; color: #B7C4DA; text-decoration: none; padding: .4rem .7rem; border-radius: 999px; }
+.navlinks a { font-family: var(--f-display); font-size: .84rem; font-weight: 500; color: #B7C4DA; text-decoration: none; padding: .4rem .75rem; border-radius: 999px; }
 .navlinks a:hover { color: #FFFFFF; background: rgba(255,255,255,.07); }
 .navlinks .cta { color: #0B1424; background: #F5BE45; }
 .navlinks .cta:hover { color: #0B1424; background: #FFD06A; }
@@ -95,49 +98,43 @@ sup.two { font-size: .58em; vertical-align: .62em; line-height: 0; }
 .floor canvas { width: 100%; height: 100%; display: block; }
 .scrim { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(8,16,29,.94) 0%, rgba(8,16,29,.86) 36%, rgba(8,16,29,.35) 56%, rgba(8,16,29,0) 70%); }
 @media (max-width: 860px) { .scrim { background: linear-gradient(180deg, rgba(8,16,29,.35) 0%, rgba(8,16,29,.88) 34%, rgba(8,16,29,.94) 100%); } }
-.hero-in { position: relative; display: grid; gap: 1.35rem; padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4.5rem); }
-.kicker { display: inline-flex; align-items: center; gap: .55rem; width: fit-content; max-width: 100%; font-family: var(--f-display); font-size: .78rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: #C9D6EC; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); border-radius: 999px; padding: .42rem .9rem; }
-.kicker i { width: 7px; height: 7px; border-radius: 50%; background: #F5BE45; box-shadow: 0 0 10px #F5BE45; flex: none; }
-.mark { font-family: var(--f-display); font-weight: 900; font-stretch: 125%; font-size: clamp(3.4rem, 11vw, 7.2rem); line-height: .9; letter-spacing: -.025em; background: linear-gradient(100deg, #FFFFFF 0%, #CFE0FF 38%, #FFE2A0 50%, #CFE0FF 62%, #FFFFFF 100%); background-size: 260% 100%; background-position: 0% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-in { position: relative; display: grid; gap: 1.25rem; padding-block: clamp(4rem, 10vw, 7.5rem) clamp(3rem, 7vw, 5.5rem); }
+.mark { font-family: var(--f-serif); font-weight: 600; font-variation-settings: "opsz" 72; font-size: clamp(3.6rem, 11vw, 7.6rem); line-height: .92; letter-spacing: -.025em; background: linear-gradient(100deg, #FFFFFF 0%, #DCE7FF 38%, #FFE2A0 50%, #DCE7FF 62%, #FFFFFF 100%); background-size: 260% 100%; background-position: 0% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
 .mark sup { font-size: .5em; vertical-align: .8em; line-height: 0; color: #F5BE45; -webkit-text-fill-color: #F5BE45; }
 @media (prefers-reduced-motion: no-preference) { .mark { animation: sheen 3.2s cubic-bezier(.4,0,.2,1) .3s 1 both; } }
 @keyframes sheen { from { background-position: 100% 0; } to { background-position: 0% 0; } }
-.hero h1 { font-size: clamp(1.9rem, 4.4vw, 3.3rem); font-weight: 800; line-height: 1.04; max-width: 19ch; color: #FFFFFF; }
-.hero .sub { font-family: var(--f-display); font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 450; color: #B9C7DD; max-width: 36rem; line-height: 1.4; }
+.hero h1 { font-size: clamp(2rem, 4.2vw, 3.15rem); font-weight: 500; line-height: 1.08; max-width: 20ch; color: #FFFFFF; }
+.hero .sub { font-family: var(--f-display); font-size: clamp(1rem, 1.8vw, 1.18rem); font-weight: 400; color: #AEBBD0; max-width: 34rem; line-height: 1.5; }
 .authors { font-family: var(--f-display); line-height: 1.7; max-width: 44rem; }
-.authors .names { display: flex; flex-wrap: wrap; gap: .1rem 1.05rem; font-weight: 600; color: #FFFFFF; }
+.authors .names { display: flex; flex-wrap: wrap; gap: .1rem 1.1rem; font-weight: 500; color: #FFFFFF; }
 .authors sup { font-weight: 500; color: #8FA3C2; font-size: .7em; }
-.authors .aff { color: #9DADC6; font-size: .84rem; display: flex; flex-wrap: wrap; gap: .2rem 1.2rem; margin-top: .25rem; }
+.authors .aff { color: #93A3BC; font-size: .82rem; display: flex; flex-wrap: wrap; gap: .2rem 1.2rem; margin-top: .3rem; }
 .btns { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .4rem; }
-.btn { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--f-display); font-weight: 650; font-size: .95rem; padding: .66rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.05); color: #EAF1FF; text-decoration: none; cursor: pointer; }
+.btn { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--f-display); font-weight: 600; font-size: .88rem; padding: .62rem 1.05rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.04); color: #EAF1FF; text-decoration: none; cursor: pointer; }
 .btn:hover { background: rgba(255,255,255,.1); }
-.btn.gold { background: #F5BE45; border-color: #F5BE45; color: #0B1424; box-shadow: 0 6px 24px rgba(245,190,69,.28); }
+.btn.gold { background: #F5BE45; border-color: #F5BE45; color: #0B1424; box-shadow: 0 4px 18px rgba(245,190,69,.22); }
 .btn.gold:hover { background: #FFD06A; }
 .btn[aria-disabled="true"] { color: #8193AE; cursor: default; }
 .btn[aria-disabled="true"]:hover { background: rgba(255,255,255,.05); }
 .btn small { font-weight: 500; font-size: .74rem; color: #8193AE; }
 .btn svg { width: 16px; height: 16px; flex: none; }
-.spec { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; font-family: var(--f-mono); font-size: .76rem; color: #8FA3C2; margin-top: .9rem; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,.09); max-width: 44rem; }
-.spec b { color: #EAF1FF; font-weight: 600; }
-.floor-note { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 14px; font-family: var(--f-mono); font-size: .7rem; color: #7488A8; max-width: 22rem; text-align: right; }
 @media (max-width: 860px) {
   .floor { top: 0; right: -30%; width: 140%; height: 70%; opacity: .55; }
-  .floor-note { display: none; }
 }
 
 /* ---------- demo */
-.stage { border: 1px solid transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(135deg, var(--h1), var(--h2) 50%, var(--h3)) border-box; border-radius: 20px; box-shadow: var(--shadow); padding: clamp(.6rem, 1.6vw, 1.1rem); display: grid; gap: .9rem; }
+.stage { border: 1px solid var(--rule); background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); padding: clamp(.7rem, 1.6vw, 1.2rem); display: grid; gap: .95rem; }
 .stage-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; padding: .2rem .3rem 0; }
-.stage-title { font-family: var(--f-display); font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: .55rem; }
+.stage-title { font-family: var(--f-display); font-weight: 600; font-size: .95rem; display: flex; align-items: center; gap: .55rem; }
 .live { width: 8px; height: 8px; border-radius: 50%; background: #E3A51C; box-shadow: 0 0 0 3px rgba(227,165,28,.25); }
 @media (prefers-reduced-motion: no-preference) { .live { animation: pulse 1.8s ease-in-out infinite; } }
 @keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(227,165,28,0); } }
 .seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; gap: 2px; flex-wrap: wrap; }
-.seg button { font-family: var(--f-display); font-size: .82rem; font-weight: 600; border: 0; background: transparent; color: var(--ink-2); padding: .38rem .85rem; border-radius: 999px; cursor: pointer; }
+.seg button { font-family: var(--f-display); font-size: .8rem; font-weight: 500; border: 0; background: transparent; color: var(--ink-2); padding: .38rem .85rem; border-radius: 999px; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.14); }
 .court-wrap { position: relative; background: var(--figcard); border-radius: 12px; overflow: hidden; aspect-ratio: 30.6 / 16.6; max-width: 100%; }
 #court { display: block; width: 100%; height: 100%; }
-.court-loading { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-display); color: #6C788B; font-size: .9rem; }
+.court-loading { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-display); color: #7B818C; font-size: .88rem; }
 .hud { position: absolute; left: 12px; top: 10px; font-family: var(--f-mono); font-size: .76rem; color: #2A3445; background: rgba(247,248,250,.86); padding: .25rem .55rem; border-radius: 6px; pointer-events: none; font-variant-numeric: tabular-nums; }
 .controls { display: grid; grid-template-columns: auto 1fr; gap: .7rem 1rem; align-items: center; padding: 0 .3rem; }
 .playbtn { width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--ours); color: var(--bg); display: grid; place-items: center; cursor: pointer; }
@@ -148,14 +145,14 @@ sup.two { font-size: .58em; vertical-align: .62em; line-height: 0; }
 .hyp-row { display: grid; gap: .45rem; padding: 0 .3rem; }
 .hyp-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1rem; font-family: var(--f-display); font-size: .82rem; color: var(--muted); }
 .hyps { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: 4px; }
-.hyps button { font-family: var(--f-mono); font-size: .74rem; font-weight: 600; border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2); border-radius: 7px; padding: .38rem 0 .3rem; cursor: pointer; display: grid; gap: 1px; justify-items: center; position: relative; min-width: 0; transition: transform .15s; }
-.hyps button:hover { transform: translateY(-2px); }
+.hyps button { font-family: var(--f-display); font-size: .76rem; font-weight: 600; font-variant-numeric: tabular-nums; border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2); border-radius: 7px; padding: .38rem 0 .3rem; cursor: pointer; display: grid; gap: 1px; justify-items: center; position: relative; min-width: 0; transition: background .15s, border-color .15s; }
+.hyps button:hover { border-color: var(--ours); }
 .hyps button span { font-weight: 400; font-size: .62rem; color: var(--muted); }
 .hyps button[aria-pressed="true"] { background: var(--ours); border-color: var(--ours); color: var(--bg); }
 .hyps button[aria-pressed="true"] span { color: var(--bg); opacity: .8; }
 .hyps button.best::after { content: ""; position: absolute; top: -4px; right: -4px; width: 9px; height: 9px; border-radius: 50%; background: #E3A51C; border: 2px solid var(--surface); }
 .readout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: .8rem 1.4rem; padding: .2rem .3rem .3rem; }
-.readout .now { font-family: var(--f-display); font-size: .92rem; color: var(--ink-2); }
+.readout .now { font-family: var(--f-display); font-size: .9rem; color: var(--ink-2); }
 .readout .now b { color: var(--ink); }
 .groups { display: grid; gap: .3rem; }
 .grp { display: flex; align-items: center; gap: .55rem; font-family: var(--f-mono); font-size: .78rem; color: var(--ink-2); flex-wrap: wrap; }
@@ -168,92 +165,88 @@ sup.two { font-size: .58em; vertical-align: .62em; line-height: 0; }
 .bead { width: 10px; height: 10px; background-image: radial-gradient(#8C96A6 1.3px, transparent 1.6px); background-size: 4px 4px; }
 .toggle { display: inline-flex; align-items: center; gap: .4rem; cursor: pointer; }
 .toggle input { accent-color: var(--ours); margin: 0; }
-.caption { font-size: .9rem; color: var(--muted); line-height: 1.5; max-width: 62rem; padding: 0 .3rem .2rem; }
+.caption { font-size: .86rem; color: var(--muted); line-height: 1.55; max-width: 62rem; padding: 0 .3rem .2rem; }
 @media (max-width: 760px) { .hyps { grid-template-columns: repeat(10, minmax(0, 1fr)); } .readout { grid-template-columns: 1fr; } }
 
 /* ---------- gallery of loops */
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.4vw, 1.6rem); }
 .tile { margin: 0; display: grid; gap: .7rem; min-width: 0; align-content: start; }
 .tile.wide { grid-column: 1 / -1; }
-.screen { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #F4F2EE; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); cursor: zoom-in; }
+.screen { position: relative; display: block; width: 100%; padding: 0; border: 1px solid var(--rule); background: #F4F2EE; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); cursor: zoom-in; }
 .screen video { display: block; width: 100%; height: auto; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-.screen:hover video { transform: scale(1.025); }
-.tile .tag { display: inline-block; width: fit-content; font-family: var(--f-display); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); background: var(--chip); padding: .22rem .55rem; border-radius: 999px; margin-bottom: .15rem; }
+.screen:hover video { transform: scale(1.015); }
+.tile .tag { display: block; font-family: var(--f-display); font-size: .68rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
 .screen .zoom { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; border-radius: 50%; background: rgba(10,20,36,.8); color: #fff; display: grid; place-items: center; opacity: 0; transition: opacity .2s; }
 .screen:hover .zoom, .screen:focus-visible .zoom { opacity: 1; }
 .screen .zoom svg { width: 15px; height: 15px; }
-.tile figcaption { display: grid; gap: .2rem; padding: 0 .2rem; }
-.tile figcaption b { font-family: var(--f-display); font-size: 1.02rem; font-weight: 700; color: var(--ink); }
-.tile figcaption span { font-size: .9rem; color: var(--muted); line-height: 1.45; }
+.tile figcaption { display: grid; gap: .25rem; padding: .1rem .2rem 0; }
+.tile figcaption b { font-family: var(--f-serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+.tile figcaption span { font-size: .88rem; color: var(--muted); line-height: 1.5; }
 @media (max-width: 720px) { .gallery { grid-template-columns: 1fr; } }
 
 /* ---------- idea + abstract */
 .thesis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
-.quote { font-family: var(--f-display); font-weight: 800; font-stretch: 108%; font-size: clamp(1.7rem, 3.4vw, 2.45rem); line-height: 1.1; letter-spacing: -.015em; }
-.quote em { font-style: normal; background: linear-gradient(90deg, var(--h1), var(--h2) 55%, var(--h3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.abstract { display: grid; gap: 1rem; font-size: 1.02rem; color: var(--ink-2); }
+.quote { font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.8rem, 3.4vw, 2.5rem); line-height: 1.18; letter-spacing: -.012em; }
+.quote em { font-style: italic; color: var(--ours); }
+.abstract { display: grid; gap: 1rem; font-size: 1rem; color: var(--ink-2); line-height: 1.7; }
 .abstract p { max-width: 38rem; }
-.abstract .first::first-letter { font-family: var(--f-display); font-weight: 800; font-size: 3.1em; float: left; line-height: .9; margin: .06em .1em 0 0; color: var(--ink); }
 figure { margin: 0; display: grid; gap: .65rem; }
-.print { background: var(--figcard); border-radius: 16px; padding: clamp(.5rem, 1.5vw, 1rem); border: 1px solid var(--rule); box-shadow: var(--shadow); }
+.print { background: var(--figcard); border-radius: 14px; padding: clamp(.5rem, 1.5vw, 1rem); border: 1px solid var(--rule); box-shadow: var(--shadow); }
 .print img { display: block; width: 100%; height: auto; }
-figcaption { font-size: .9rem; color: var(--muted); line-height: 1.5; }
-figcaption b { color: var(--ink-2); font-family: var(--f-display); font-weight: 650; }
+figcaption { font-size: .86rem; color: var(--muted); line-height: 1.55; }
+figcaption b { color: var(--ink-2); font-family: var(--f-display); font-weight: 600; }
 @media (max-width: 860px) { .thesis { grid-template-columns: 1fr; } }
 
 /* ---------- method */
 .ideas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.8rem; }
-.idea { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 1.3rem 1.3rem 1.4rem; display: grid; gap: .65rem; align-content: start; overflow: hidden; transition: transform .2s, box-shadow .2s; }
-.idea::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: var(--c); }
-.idea:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.idea .tag { font-family: var(--f-mono); font-size: .7rem; color: var(--muted); letter-spacing: .04em; }
-.idea p { font-size: .97rem; color: var(--ink-2); }
-.eq { font-family: var(--f-body); font-style: italic; font-size: 1.05rem; color: var(--ink); background: var(--chip); border-radius: 8px; padding: .55rem .75rem; overflow-wrap: anywhere; line-height: 1.7; }
+.idea { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.4rem 1.4rem 1.5rem; display: grid; gap: .7rem; align-content: start; }
+.idea .tag { font-family: var(--f-display); font-size: .66rem; font-weight: 600; letter-spacing: .14em; color: var(--c); }
+.idea p { font-size: .95rem; color: var(--ink-2); }
+.eq { font-family: var(--f-serif); font-style: italic; font-size: 1.12rem; color: var(--ink); background: var(--chip); border-radius: 8px; padding: .55rem .8rem; overflow-wrap: anywhere; line-height: 1.7; }
 .eq .up { font-style: normal; }
 @media (max-width: 860px) { .ideas { grid-template-columns: 1fr; } }
 
 /* ---------- results */
 .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-bottom: 2.2rem; }
-.stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 1.1rem 1.1rem 1rem; display: grid; gap: .3rem; position: relative; overflow: hidden; }
-.stat::after { content: ""; position: absolute; right: -30px; top: -30px; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(var(--c), transparent 70%); opacity: .2; }
-.stat .v { font-family: var(--f-display); font-weight: 900; font-stretch: 115%; font-size: clamp(2rem, 3.6vw, 2.7rem); line-height: 1; font-variant-numeric: tabular-nums; color: var(--ink); }
-.stat .l { font-family: var(--f-display); font-size: .88rem; color: var(--ink-2); line-height: 1.35; }
-.stat .d { font-family: var(--f-mono); font-size: .72rem; color: var(--muted); }
+.stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.2rem 1.2rem 1.05rem; display: grid; gap: .35rem; position: relative; border-top: 2px solid var(--c); }
+.stat .v { font-family: var(--f-serif); font-weight: 500; font-size: clamp(2.2rem, 3.8vw, 2.9rem); line-height: 1; font-variant-numeric: lining-nums tabular-nums; color: var(--ink); letter-spacing: -.02em; }
+.stat .l { font-family: var(--f-display); font-size: .86rem; color: var(--ink-2); line-height: 1.4; }
+.stat .d { font-family: var(--f-display); font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 @media (max-width: 860px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .chart-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .7rem; margin-bottom: 1rem; }
 .panels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: .85rem .85rem .6rem; min-width: 0; }
-.panel h3 { font-size: .92rem; margin-bottom: .1rem; }
-.panel .unit { font-family: var(--f-mono); font-size: .68rem; color: var(--muted); }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: .9rem .9rem .65rem; min-width: 0; }
+.panel h3 { font-size: 1rem; margin-bottom: .1rem; }
+.panel .unit { font-family: var(--f-display); font-size: .7rem; color: var(--muted); }
 .panel svg { display: block; width: 100%; height: auto; overflow: visible; }
-.panel .gain { font-family: var(--f-mono); font-size: .72rem; color: var(--ink-2); margin-top: .2rem; }
+.panel .gain { font-family: var(--f-display); font-size: .74rem; color: var(--ink-2); margin-top: .2rem; font-variant-numeric: tabular-nums; }
 @media (max-width: 960px) { .panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .panels { grid-template-columns: 1fr; } }
 .tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-family: var(--f-mono); font-size: .74rem; padding: .35rem .55rem; border-radius: 6px; z-index: 50; white-space: nowrap; }
 .tablebox { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin-top: 1rem; }
-table { border-collapse: collapse; width: 100%; font-family: var(--f-mono); font-size: .78rem; font-variant-numeric: tabular-nums; }
+table { border-collapse: collapse; width: 100%; font-family: var(--f-display); font-size: .82rem; font-variant-numeric: tabular-nums; }
 th, td { padding: .45rem .7rem; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--rule); }
-th { font-family: var(--f-display); font-weight: 650; color: var(--ink-2); font-size: .8rem; }
+th { font-family: var(--f-display); font-weight: 600; color: var(--ink-2); font-size: .78rem; letter-spacing: .02em; }
 th:first-child, td:first-child { text-align: left; }
 tr.ours td { background: color-mix(in srgb, var(--ours) 12%, transparent); font-weight: 600; color: var(--ink); }
 td.best { font-weight: 700; color: var(--ink); }
 td.second { text-decoration: underline; text-underline-offset: 3px; }
 tbody tr:last-child td { border-bottom: 0; }
 details { margin-top: 1.2rem; }
-summary { font-family: var(--f-display); font-weight: 650; cursor: pointer; color: var(--ink); padding: .4rem 0; }
+summary { font-family: var(--f-display); font-weight: 600; cursor: pointer; color: var(--ink); padding: .45rem 0; }
 summary span { color: var(--muted); font-weight: 500; font-size: .88rem; }
-.note { font-size: .9rem; color: var(--muted); margin-top: .6rem; max-width: 52rem; }
+.note { font-size: .86rem; color: var(--muted); margin-top: .6rem; max-width: 52rem; }
 
 /* ---------- analysis */
 .analysis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
 .analysis p { color: var(--ink-2); max-width: 34rem; }
-.hbars { display: grid; gap: .8rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 1.3rem; }
-.hb { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 3rem; gap: .7rem; align-items: center; font-family: var(--f-display); font-size: .86rem; color: var(--ink-2); }
+.hbars { display: grid; gap: .8rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.4rem; }
+.hb { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 3rem; gap: .7rem; align-items: center; font-family: var(--f-display); font-size: .85rem; color: var(--ink-2); }
 .hb .track { height: 16px; position: relative; border-left: 1px solid var(--rule); }
 .hb .fill { position: absolute; left: 0; top: 1px; bottom: 1px; border-radius: 0 4px 4px 0; background: var(--other); }
 .hb.own .fill { background: var(--ours); }
-.hb .val { font-family: var(--f-mono); font-size: .8rem; color: var(--ink); text-align: right; }
-.hb.own { color: var(--ink); font-weight: 650; }
+.hb .val { font-family: var(--f-display); font-size: .82rem; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+.hb.own { color: var(--ink); font-weight: 600; }
 .axis01 { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 3rem; gap: .7rem; font-family: var(--f-mono); font-size: .68rem; color: var(--muted); }
 .axis01 div { display: flex; justify-content: space-between; }
 @media (max-width: 860px) { .analysis { grid-template-columns: 1fr; } }
@@ -263,13 +256,13 @@ summary span { color: var(--muted); font-weight: 500; font-size: .88rem; }
 .figs { display: grid; gap: 2.4rem; }
 .bib { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; }
 .bib pre { margin: 0; padding: 1.2rem 1.3rem; overflow-x: auto; font-family: var(--f-mono); font-size: .8rem; line-height: 1.6; color: var(--ink-2); }
-.copy { position: absolute; top: .7rem; right: .7rem; font-family: var(--f-display); font-weight: 600; font-size: .8rem; border: 1px solid var(--rule); background: var(--bg); color: var(--ink); border-radius: 999px; padding: .32rem .85rem; cursor: pointer; }
-footer { background: var(--night); color: #8FA3C2; padding-block: 2.4rem 3rem; font-family: var(--f-display); font-size: .84rem; }
+.copy { position: absolute; top: .7rem; right: .7rem; font-family: var(--f-display); font-weight: 500; font-size: .78rem; border: 1px solid var(--rule); background: var(--bg); color: var(--ink); border-radius: 999px; padding: .32rem .85rem; cursor: pointer; }
+footer { background: var(--night); color: #8FA3C2; padding-block: 2.6rem 3.2rem; font-family: var(--f-display); font-size: .82rem; }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
 .lb { position: fixed; inset: 0; z-index: 60; background: rgba(4,8,16,.92); display: grid; place-items: center; padding: calc(env(safe-area-inset-top, 0px) + 60px) max(16px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(16px, env(safe-area-inset-left, 0px)); }
 .lb-in { width: min(100%, 1280px); display: grid; gap: .8rem; }
 .lb video { width: 100%; max-height: 78vh; background: #000; border-radius: 12px; display: block; }
-.lb p { color: #C9D6EC; font-family: var(--f-display); font-size: .95rem; }
+.lb p { color: #C9D6EC; font-family: var(--f-display); font-size: .92rem; }
 .lb-close { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: max(16px, env(safe-area-inset-right, 0px)); width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: #fff; font-size: 1.1rem; cursor: pointer; }
 [hidden] { display: none !important; }                /* outside claude.ai: hidden must win over .lb / .tip display rules */
 </style>
@@ -279,8 +272,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap">
     <a class="brand" href="#top">H<sup>2</sup>Flow</a>
     <div class="navlinks">
-      <a href="#demo">Live demo</a><a href="#motion">In motion</a><a href="#method">Method</a><a href="#results">Results</a><a href="#cite">Cite</a>
-      <a class="cta" href="#top" data-overview>Watch video</a>
+      <a href="#demo">Demo</a><a href="#motion">Videos</a><a href="#method">Method</a><a href="#results">Results</a><a href="#cite">BibTeX</a>
+      <a class="cta" href="#top" data-overview>Video</a>
     </div>
   </div>
 </nav>
@@ -289,41 +282,37 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="floor" aria-hidden="true"><canvas id="floor"></canvas></div>
   <div class="scrim" aria-hidden="true"></div>
   <div class="wrap hero-in">
-    <div class="kicker"><i></i>Collective motion forecasting · NBA · NFL · Soccer</div>
     <div class="mark" aria-hidden="true">H<sup>2</sup>Flow</div>
     <h1>Groups Shape Futures, Futures Define Groups</h1>
     <p class="sub">Hypothesis-Conditioned Hypergraph Flow Matching for Collective Motion Forecasting</p>
     <div class="authors">
-      <div class="names"><span>Rui Gan<sup>1</sup></span><span>Jiaxi Liu<sup>1</sup></span><span>Zheng Li<sup>1</sup></span><span>Sixu Li<sup>1</sup></span><span>Zihao Li<sup>2</sup></span><span>Keshu Wu<sup>1,*</sup></span><span>Yang Zhou<sup>3</sup></span><span>Xiaopeng Li<sup>1</sup></span></div>
-      <div class="aff"><span><sup>1</sup>University of Wisconsin-Madison</span><span><sup>2</sup>Marquette University</span><span><sup>3</sup>Texas A&amp;M University</span><span><sup>*</sup>Corresponding author</span></div>
+      <div class="names"><span>Rui Gan<sup>1</sup></span><span>Jiaxi Liu<sup>1</sup></span><span>Zheng Li<sup>1</sup></span><span>Sixu Li<sup>1</sup></span><span>Zihao Li<sup>2</sup></span><span>Keshu Wu<sup>1</sup></span><span>Yang Zhou<sup>3</sup></span><span>Xiaopeng Li<sup>1</sup></span></div>
+      <div class="aff"><span><sup>1</sup>University of Wisconsin-Madison</span><span><sup>2</sup>Marquette University</span><span><sup>3</sup>Texas A&amp;M University</span></div>
     </div>
     <div class="btns">
-      <button class="btn gold" type="button" data-overview><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.2v9.6L12.6 8z"/></svg>Watch the overview</button>
+      <button class="btn gold" type="button" data-overview><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.2v9.6L12.6 8z"/></svg>Video</button>
       <span class="btn" aria-disabled="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1.75h5.5L13 5.25v9H4z"/><path d="M9.5 1.75v3.5H13"/></svg>Paper <small>arXiv soon</small></span>
       <span class="btn" aria-disabled="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5"/></svg>Code <small>soon</small></span>
-      <a class="btn" href="#cite"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2.5h10v11l-5-3-5 3z"/></svg>Cite</a>
     </div>
-    <div class="spec"><span><b>20</b> hypotheses per scene</span><span><b>4.0 s</b> horizon</span><span><b>10</b> flow steps</span><span>groups learned <b>without labels</b></span></div>
   </div>
-  <p class="floor-note">Behind the title: the real flow of H²Flow on NBA test play 213, from noise to 20 forecasts, with the groups of its top hypotheses.</p>
 </header>
 
 <section id="demo" aria-labelledby="demo-title">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">Live demo</div>
-      <h2 id="demo-title">Watch futures define groups</h2>
-      <p class="lede">Scrub the flow from noise to forecast, or pick any of the 20 hypotheses. Each one forms its own groups from the future it is predicting.</p>
+      <div class="eyebrow">Interactive demo</div>
+      <h2 id="demo-title">Flow States and Hypothesis Groups</h2>
+      <p class="lede">Move along the flow or select a hypothesis to see the groups it forms from its own predicted future.</p>
     </div>
     <div class="stage">
       <div class="stage-top">
-        <div class="stage-title"><span class="live" aria-hidden="true"></span>NBA test plays, real flow states</div>
+        <div class="stage-title"><span class="live" aria-hidden="true"></span>NBA test plays</div>
         <div class="seg" role="group" aria-label="NBA play" id="plays"></div>
       </div>
       <div class="court-wrap">
         <canvas id="court" aria-label="NBA court with the flow states, the selected hypothesis and its groups"></canvas>
         <div class="hud" id="hud" hidden></div>
-        <div class="court-loading" id="loading">Loading the flow states of three NBA test plays…</div>
+        <div class="court-loading" id="loading">Loading…</div>
       </div>
       <div class="controls">
         <button class="playbtn" id="play" aria-label="Pause"><svg viewBox="0 0 16 16" fill="currentColor" id="playicon"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg></button>
@@ -333,7 +322,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
       </div>
       <div class="hyp-row">
-        <div class="hyp-label"><span>The 20 hypotheses, ranked by their predicted score (joint ADE in m below)</span><span><i style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#E3A51C;vertical-align:0;margin-right:.3rem"></i>lowest joint error</span></div>
+        <div class="hyp-label"><span>Hypotheses by predicted score · joint ADE (m)</span><span><i style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#E3A51C;vertical-align:0;margin-right:.3rem"></i>best joint ADE</span></div>
         <div class="hyps" id="hyps" role="group" aria-label="Hypothesis"></div>
       </div>
       <div class="readout">
@@ -342,10 +331,10 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       </div>
       <div class="legend">
         <span><i class="dot-a"></i>Team A</span><span><i class="dot-b"></i>Team B</span><span><i class="dia"></i>Ball</span>
-        <span><i class="bead"></i>States of all 20 hypotheses</span>
+        <span><i class="bead"></i>All 20 hypotheses</span>
         <label class="toggle"><input type="checkbox" id="gt"> True future</label>
       </div>
-      <p class="caption">All 20 hypotheses start from one noise sample at t = 0 and reach their forecasts after 10 Euler steps. The selected hypothesis shows its estimate of the 4 s future and, around the agents' predicted positions at 4 s, the most-supported group of each size that it forms for 2–4 s.</p>
+      <p class="caption">All 20 hypotheses start from one noise sample and reach their forecasts after 10 Euler steps. Hulls: the most-supported 2–4 s group of each size of the selected hypothesis.</p>
     </div>
   </div>
 </section>
@@ -353,9 +342,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <section id="motion" aria-labelledby="motion-title">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow">In motion</div>
-      <h2 id="motion-title">Futures unfold, and every hypothesis brings its own groups</h2>
-      <p class="lede">Short loops cut from our videos. Click one to watch it large.</p>
+      <div class="eyebrow">Videos</div>
+      <h2 id="motion-title">Forecasts in Motion</h2>
+      <p class="lede">Select a clip to enlarge it.</p>
     </div>
     <div class="gallery" id="gallery"></div>
   </div>
@@ -364,11 +353,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 <section id="idea" aria-labelledby="idea-title">
   <div class="wrap thesis">
     <div style="display:grid;gap:1.4rem">
-      <div class="eyebrow" id="idea-title">The idea</div>
+      <div class="eyebrow" id="idea-title">Key idea</div>
       <p class="quote">Hypothesis-conditioned groups: <em>every hypothesis forms the groups of the future it predicts.</em></p>
       <figure>
         <div class="print"><img src="static/media/fig_teaser.webp" alt="Per-agent, group-aware and H2Flow forecasters: H2Flow forms groups of its future for every hypothesis" width="1320" height="956" loading="lazy"></div>
-        <figcaption><b>Figure 1.</b> Per-agent forecasters ignore groups, and group-aware forecasters fix them from the past for all futures. Every hypothesis of H<sup class="two">2</sup>Flow forms the groups of its own future, at every flow step.</figcaption>
+        <figcaption><b>Figure 1.</b> Group-aware forecasters fix groups from the past for all futures; each hypothesis of H<sup class="two">2</sup>Flow forms the groups of its own future.</figcaption>
       </figure>
     </div>
     <div class="abstract">
@@ -384,8 +373,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Method</div>
-      <h2 id="method-title">One encoder per scene, one set of groups per hypothesis</h2>
-      <p class="lede">A scene hypergraph encoder runs once on the observed motion. A hypothesis-conditioned decoder runs at every flow step: in each of its blocks, every hypothesis forms groups from its latest estimate of the future, and those groups shape its prediction.</p>
+      <h2 id="method-title">Hypothesis-Conditioned Hypergraph Flow Matching</h2>
     </div>
     <figure>
       <div class="print"><img src="static/media/fig_overview.webp" alt="Overview of H2Flow: scene hypergraph encoder and hypothesis-conditioned decoder inside the flow matching loop" width="2400" height="1343" loading="lazy"></div>
@@ -395,19 +383,19 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       <article class="idea" style="--c:var(--h1)">
         <span class="tag">DECODER · EVERY BLOCK, EVERY FLOW STEP</span>
         <h3>Futures define groups</h3>
-        <p>Flow matching with data prediction gives each hypothesis an estimate of its future at every step, and self-conditioning passes it to the next. Each hypothesis groups agents by the similarity of their tokens and their distance in its own estimated future, so its hyperedges of several sizes follow the future as it forms.</p>
+        <p>Each hypothesis groups agents by token similarity and by their distance in its own estimated future, passed on by self-conditioning.</p>
         <div class="eq" aria-label="affinity equals token similarity minus t times w times the estimated distance">α<sub>k,ij</sub> <span class="up">=</span> ḡ<sub>k,i</sub><sup>⊤</sup>ḡ<sub>k,j</sub> <span class="up">−</span> t · w · δ<sub>k,ij</sub></div>
       </article>
       <article class="idea" style="--c:var(--h2)">
         <span class="tag">DECODER · AGENT ATTENTION AND HEAD</span>
         <h3>Groups shape futures</h3>
-        <p>Every group becomes a token that the agents of its hypothesis attend to. A group-factorized endpoint adds a correction shared by the members of each group, which couples the predictions of agents that move together.</p>
+        <p>Agents attend to the group tokens of their hypothesis, and a group-factorized endpoint adds a correction shared by the members of each group.</p>
         <div class="eq" aria-label="endpoint equals per-agent term plus mean group correction">S<sub>k,i</sub> <span class="up">=</span> MLP<sub>reg</sub>(G<sub>k,i</sub>) <span class="up">+</span> mean<sub>e ∋ i</sub> MLP<sub>grp</sub>(γ<sub>k,e</sub>)</div>
       </article>
       <article class="idea" style="--c:var(--h3)">
         <span class="tag">TRAINING · NO GROUP LABELS</span>
         <h3>Hyperedge-level winner-take-all</h3>
-        <p>Each hypothesis is scored on its own groups, and the best one wins each hyperedge. A hypothesis wins only by predicting the whole group well, and the loosely coupled groups of one scene can follow different hypotheses.</p>
+        <p>Each hyperedge selects the hypothesis with the lowest error over its members, without group labels.</p>
         <div class="eq" aria-label="group loss equals mean over hyperedges of the minimum over hypotheses of the group error">ℒ<sub>grp</sub> <span class="up">=</span> mean<sub>e</sub> min<sub>k</sub> ε<sub>k,e</sub></div>
       </article>
     </div>
@@ -418,8 +406,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Results</div>
-      <h2 id="results-title">The gains grow where several agents must be right together</h2>
-      <p class="lede">All models are retrained on the same scenes and evaluated at a 4.0 s horizon with K = 20 hypotheses. G3, Team and Scene match each group (an agent and its two nearest neighbors, a team, or all agents) to the one hypothesis that is best for all its members. H<sup class="two">2</sup>Flow trains on none of these groupings.</p>
+      <h2 id="results-title">Trajectory and Joint Accuracy</h2>
+      <p class="lede">4.0 s horizon, K = 20. G3, Team, and Scene match each group (an agent with its two nearest neighbors, a team, or all agents) to its best hypothesis.</p>
     </div>
     <div class="stats">
       <div class="stat" style="--c:var(--h1)"><span class="v" data-count="6.2">−6.2%</span><span class="l">Scene-min<sub>20</sub>ADE on NBA</span><span class="d">1.372 m vs 1.463 m (MoFlow)</span></div>
@@ -471,7 +459,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <tr class="ours"><td>H²Flow</td><td>.44/.64</td><td>.12/.16</td><td>.23/.41</td><td>.16/.29</td><td>.13/.22</td><td>.22/.34</td><td>7.44/11.92</td></tr>
         </tbody>
       </table></div>
-      <p class="note">On ETH-UCY and SDD, H²Flow has the lowest min<sub>20</sub>ADE on Zara1 and SDD and the lowest min<sub>20</sub>FDE on Hotel, and trails most methods on ETH. Its best configurations forecast each pedestrian alone on ETH, Univ, Zara2 and SDD, so these benchmarks test its decoder more than its groups.</p>
+      <p class="note">Its best configurations on ETH, Univ, Zara2, and SDD forecast each pedestrian alone, so these benchmarks mainly test the decoder.</p>
     </details>
   </div>
 </section>
@@ -480,12 +468,12 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap analysis">
     <div style="display:grid;gap:1rem">
       <div class="eyebrow">Analysis</div>
-      <h2 id="analysis-title">Every hypothesis forms the groups of its own future</h2>
-      <p>On NBA, the 2–4 s groups of a hypothesis overlap most with the nearest-neighbor groups of its own predicted future. Among the 20 futures, its own is the closest at 2.6× chance, and 77% of its hyperedges join players of both teams.</p>
-      <p>Scoring the hypotheses on groups drives joint accuracy. Without the hyperedge-level loss, Scene-min<sub>20</sub>ADE rises from 1.373 to 1.464 m.</p>
+      <h2 id="analysis-title">Groups Follow Each Hypothesis's Future</h2>
+      <p>On NBA, the 2–4 s groups of a hypothesis overlap most with the groups of its own predicted future, the closest of the 20 at 2.6× chance.</p>
+      <p>Without the hyperedge-level loss, Scene-min<sub>20</sub>ADE rises from 1.373 to 1.464 m.</p>
     </div>
     <div class="hbars" role="img" aria-label="Jaccard overlap of a hypothesis's groups with the groups of its own future 0.687, another hypothesis's future 0.654, the true future 0.581, random groups 0.21">
-      <div style="font-family:var(--f-display);font-weight:650;font-size:.9rem;color:var(--ink);margin-bottom:.2rem">Overlap of a hypothesis's groups with the groups of… <span style="color:var(--muted);font-weight:500">(Jaccard)</span></div>
+      <div style="font-family:var(--f-display);font-weight:600;font-size:.88rem;color:var(--ink);margin-bottom:.2rem">Overlap of a hypothesis's groups with the groups of… <span style="color:var(--muted);font-weight:500">(Jaccard)</span></div>
       <div class="hb own"><span>its own future</span><div class="track"><div class="fill" style="width:68.7%"></div></div><span class="val">0.687</span></div>
       <div class="hb"><span>another hypothesis's future</span><div class="track"><div class="fill" style="width:65.4%"></div></div><span class="val">0.654</span></div>
       <div class="hb"><span>the true future</span><div class="track"><div class="fill" style="width:58.1%"></div></div><span class="val">0.581</span></div>
@@ -499,16 +487,16 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Qualitative results</div>
-      <h2 id="qual-title">Closer joint futures, and groups that differ between hypotheses</h2>
+      <h2 id="qual-title">Joint Forecasts and Hypothesis Groups</h2>
     </div>
     <div class="figs">
       <figure>
         <div class="print"><img src="static/media/fig_qual_pred_gt.webp" alt="Best joint hypothesis of each model on an NBA, an NFL and a soccer play" width="2400" height="1146" loading="lazy"></div>
-        <figcaption><b>Figure 3.</b> Best joint hypothesis of each model on an NBA, an NFL and a soccer play, with its ADE/FDE (m). The best joint hypothesis of H<sup class="two">2</sup>Flow follows the true future most closely: 0.83, 1.83 and 1.86 m over all agents, against at least 1.07, 2.30 and 2.23 m for the baselines.</figcaption>
+        <figcaption><b>Figure 3.</b> Best joint hypothesis of each model on an NBA, an NFL, and a soccer play (ADE/FDE in m).</figcaption>
       </figure>
       <figure>
         <div class="print"><img src="static/media/fig_qual_hyp_groups.webp" alt="Hypotheses of H2Flow on one NBA play with their groups" width="2400" height="691" loading="lazy"></div>
-        <figcaption><b>Figure 4.</b> Hypotheses of H<sup class="two">2</sup>Flow on one NBA play with their score rank and the most-supported group of each size (top), and their best-supported hyperedges over 2.0–4.0 s (bottom). Ten of the fifteen shown are distinct, so the hypotheses differ in which players move together as well as in where they go.</figcaption>
+        <figcaption><b>Figure 4.</b> Hypotheses of H<sup class="two">2</sup>Flow on one NBA play: the most-supported group of each size (top) and the best-supported 2–4 s hyperedges (bottom).</figcaption>
       </figure>
     </div>
   </div>
@@ -535,7 +523,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </section>
 
 <footer>
-  <div class="wrap"><span style="font-weight:900;font-stretch:125%;color:#EAF1FF;font-size:1.05rem">H<sup style="color:#F5BE45;font-size:.55em">2</sup>Flow</span><span>University of Wisconsin-Madison · Marquette University · Texas A&amp;M University</span></div>
+  <div class="wrap"><span style="font-family:var(--f-serif);font-weight:600;color:#EAF1FF;font-size:1.15rem">H<sup style="color:#F5BE45;font-size:.55em">2</sup>Flow</span><span>University of Wisconsin-Madison · Marquette University · Texas A&amp;M University</span></div>
 </footer>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Video player">
@@ -562,17 +550,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLB(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) closeLB(); });
   Array.prototype.forEach.call(document.querySelectorAll('[data-overview]'), function (n) {
-    n.addEventListener('click', function (e) { e.preventDefault(); openLB('static/media/overview.mp4', 'static/media/overview.jpg', 'Overview of H²Flow (2.5 min, with music): the problem, the framework, flow matching, examples and results.', false); });
+    n.addEventListener('click', function (e) { e.preventDefault(); openLB('static/media/overview.mp4', 'static/media/overview.jpg', 'H²Flow overview (2.5 min).', false); });
   });
 
   /* ---------------------------------------------------------------- gallery of loops */
   var CLIPS = [
-    { id: 'flow_steps', wide: true, tag: 'NBA · flow steps', title: 'From noise to forecast, step by step', text: 'NBA play 101. Top: the flow states of two hypotheses. Bottom: the estimate and the 2–4 s groups that each one forms at every Euler step.' },
-    { id: 'hyp_groups', tag: 'NBA · 20 hypotheses', title: 'Every hypothesis, its own groups', text: 'NBA play 382: one group of 2, 3 and 5 players for each hypothesis, ranked by score, as the future unrolls.' },
-    { id: 'nba_futures', tag: 'NBA · vs MoFlow', title: 'Twenty futures beside MoFlow', text: 'The same play: all 20 hypotheses of MoFlow and H²Flow next to the true future, with the best joint hypothesis as beads.' },
-    { id: 'more_plays', tag: 'NBA · NFL · Soccer', title: 'More plays, three sports', text: 'Two NBA plays, one NFL play and one soccer play: the states of all 20 hypotheses, and the estimate and groups of the best one.' },
-    { id: 'soccer', tag: 'Soccer', title: '22 players and the ball', text: 'Soccer play 359: all 20 hypotheses of MoFlow and H²Flow next to the true future.' },
-    { id: 'pedestrians', wide: true, tag: 'ETH-UCY · Univ', title: 'Pedestrians on the camera frame', text: 'ETH-UCY Univ sequence 917: all 20 hypotheses of MoFlow and H²Flow next to the true future, drawn on the scene.' }
+    { id: 'flow_steps', wide: true, tag: 'NBA', title: 'Flow Matching, Step by Step', text: 'Play 101: flow states (top), estimates and 2–4 s groups (bottom) of two hypotheses at each Euler step.' },
+    { id: 'hyp_groups', tag: 'NBA', title: 'Groups of Every Hypothesis', text: 'Play 382: the most-supported group of each size for all 20 hypotheses, ranked by score.' },
+    { id: 'more_plays', tag: 'NBA · NFL · Soccer', title: 'Across Sports', text: 'All 20 hypotheses, with the estimate and groups of the best one.' },
+    { id: 'pedestrians', wide: true, tag: 'ETH-UCY', title: 'Pedestrians', text: 'Univ sequence 917: all 20 hypotheses of MoFlow and H²Flow against the true future.' }
   ];
   var gal = document.getElementById('gallery'), vids = [];
   CLIPS.forEach(function (c) {
@@ -644,15 +630,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       for (var g = x0; g <= x1 + 1e-9; g += step) {
         var gx = sx(g);
         svg.appendChild(sv('line', { x1: gx, x2: gx, y1: top, y2: H - 20, stroke: 'var(--rule)', 'stroke-width': 1 }));
-        svg.appendChild(sv('text', { x: gx, y: H - 6, 'text-anchor': 'middle', fill: 'var(--muted)', 'font-size': 10, 'font-family': 'JetBrains Mono, monospace' }, (+g.toFixed(2)).toString()));
+        svg.appendChild(sv('text', { x: gx, y: H - 6, 'text-anchor': 'middle', fill: 'var(--muted)', 'font-size': 10, 'font-family': 'Inter, sans-serif', style: 'font-variant-numeric: tabular-nums' }, (+g.toFixed(2)).toString()));
       }
       vals.forEach(function (v, i) {
         var y = top + rowH * i + rowH / 2, isOurs = i === 5;
-        svg.appendChild(sv('text', { x: 0, y: y + 4, fill: isOurs ? 'var(--ink)' : 'var(--ink-2)', 'font-size': 11.5, 'font-weight': isOurs ? 700 : 500, 'font-family': 'Archivo, sans-serif' }, METHODS[i]));
+        svg.appendChild(sv('text', { x: 0, y: y + 4, fill: isOurs ? 'var(--ink)' : 'var(--ink-2)', 'font-size': 11.5, 'font-weight': isOurs ? 700 : 500, 'font-family': 'Inter, sans-serif' }, METHODS[i]));
         svg.appendChild(sv('line', { x1: padL, x2: sx(v), y1: y, y2: y, stroke: isOurs ? 'var(--ours)' : 'var(--other)', 'stroke-width': 2, 'stroke-linecap': 'round', opacity: isOurs ? .55 : .45 }));
         var c = sv('circle', { cx: sx(v), cy: y, r: isOurs ? 6 : 4.5, fill: isOurs ? 'var(--ours)' : 'var(--other)', stroke: 'var(--surface)', 'stroke-width': 2 });
         svg.appendChild(c);
-        svg.appendChild(sv('text', { x: sx(v) + 10, y: y + 4, fill: isOurs ? 'var(--ink)' : 'var(--muted)', 'font-size': 10.5, 'font-weight': isOurs ? 700 : 400, 'font-family': 'JetBrains Mono, monospace' }, v.toFixed(3)));
+        svg.appendChild(sv('text', { x: sx(v) + 10, y: y + 4, fill: isOurs ? 'var(--ink)' : 'var(--muted)', 'font-size': 10.5, 'font-weight': isOurs ? 700 : 400, 'font-family': 'Inter, sans-serif', style: 'font-variant-numeric: tabular-nums' }, v.toFixed(3)));
         var hit = sv('rect', { x: 0, y: y - rowH / 2, width: W, height: rowH, fill: 'transparent' });
         var r = rows[i], html = '<b>' + METHODS[i] + '</b> · ' + VENUES[i] + '<br>' + LEVEL_NAME[lev] + ' ADE/FDE ' + r[li * 2].toFixed(3) + ' / ' + r[li * 2 + 1].toFixed(3) + ' m';
         hit.addEventListener('pointerenter', function (e) { showTip(e, html); c.setAttribute('r', isOurs ? 7 : 6); });
@@ -763,16 +749,17 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   function fpx(x) { return FW / 2 + x * fsc; }
   function fpy(y) { return FH / 2 - y * fsc; }
   function ease(u) { return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; }
-  // timeline (s): 0-1 noise, 1-6.5 flow 0->1, 6.5-12.5 hold and show the groups of the top three hypotheses, 12.5-14 back to noise
+  // timeline (s): 0-1 noise, 1-6.5 flow 0->1, 6.5-12.5 hold: up to three top-scored hypotheses in turn, each with its trajectories
+  // and its most-supported group of three (HP.heroKs: distinct groups), 12.5-14 back to noise
   var PERIOD = 14;
   function heroClock() { if (REDUCED || heroT0 === null) return 7; return ((performance.now() - heroT0) / 1000) % PERIOD; }
   function heroState(c) {
     var t = 0, show = 0, cyc = 0;
     if (c < 1) t = 0;
     else if (c < 6.5) t = ease((c - 1) / 5.5);
-    else if (c < 12.5) { t = 1; cyc = Math.min(2, Math.floor((c - 6.5) / 2)); var u = (c - 6.5) - cyc * 2; show = Math.min(1, u / .45, (2 - u) / .35); if (REDUCED) show = 1; }
+    else if (c < 12.5) { t = 1; var n = HP ? HP.heroKs.length : 1, seg = 6 / n; cyc = Math.min(n - 1, Math.floor((c - 6.5) / seg)); var u = (c - 6.5) - cyc * seg; show = Math.min(1, u / .45, (seg - u) / .35); if (REDUCED) show = 1; }
     else t = 1 - ease((c - 12.5) / 1.5);
-    return { t: t, show: Math.max(0, show), k: HP ? HP.byRank[cyc] : 0 };
+    return { t: t, show: Math.max(0, show), k: HP ? HP.heroKs[cyc] : 0 };
   }
   function fresize() { var r = fcv.getBoundingClientRect(); fdpr = Math.min(window.devicePixelRatio || 1, 2); FW = r.width; FH = r.height; fcv.width = Math.round(FW * fdpr); fcv.height = Math.round(FH * fdpr); fsc = Math.min(FW / 33, FH / 18); drawFloor(heroClock()); }
   function drawFloor(c) {
@@ -782,21 +769,19 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     if (!HP) return;
     var s = heroState(c), tau = s.t, ti = Math.min(Math.floor(tau * 10), 9), fr = tau * 10 - ti, ti1 = Math.min(ti + 1, 10), st = HP.state, a, f, k;
     x.globalCompositeOperation = 'lighter';
-    var sz = Math.max(5, fsc * .42);
-    x.globalAlpha = 0.16 + 0.34 * tau;
-    for (k = 0; k < K; k++) for (a = 0; a < A; a++) {
+    var sz = Math.max(8, fsc * .8);
+    x.globalAlpha = 0.28 + 0.5 * tau;
+    for (k = 0; k < K; k++) for (a = 0; a < A; a++) {                 // the 4 s state of every hypothesis: 20 dots per agent
       var spr = a === BALL ? SPR.ball : (a < NT ? SPR.a : SPR.b), ox = HP.pos0[a][0], oy = HP.pos0[a][1];
-      for (f = 0; f < F; f++) {
-        var i0 = sIdx(ti, k, a, f), i1 = sIdx(ti1, k, a, f);
-        var X = fpx(ox + st[i0] + (st[i1] - st[i0]) * fr), Y = fpy(oy + st[i0 + 1] + (st[i1 + 1] - st[i0 + 1]) * fr);
-        if (X < -10 || Y < -10 || X > FW + 10 || Y > FH + 10) continue;
-        x.drawImage(spr, X - sz / 2, Y - sz / 2, sz, sz);
-      }
+      var i0 = sIdx(ti, k, a, F - 1), i1 = sIdx(ti1, k, a, F - 1);
+      var X = fpx(ox + st[i0] + (st[i1] - st[i0]) * fr), Y = fpy(oy + st[i0 + 1] + (st[i1 + 1] - st[i0 + 1]) * fr);
+      if (X < -10 || Y < -10 || X > FW + 10 || Y > FH + 10) continue;
+      x.drawImage(spr, X - sz / 2, Y - sz / 2, sz, sz);
     }
     x.globalAlpha = 1;
     x.lineCap = 'round'; x.lineJoin = 'round';
     for (a = 0; a < A; a++) {
-      x.strokeStyle = 'rgba(' + teamRGB(a) + ',.6)'; x.lineWidth = 1.8; x.beginPath();
+      x.strokeStyle = 'rgba(' + teamRGB(a) + ',.45)'; x.lineWidth = 1.4; x.beginPath();
       for (f = 0; f < 10; f++) { var q = HP.past[a][f]; if (f) x.lineTo(fpx(q[0]), fpy(q[1])); else x.moveTo(fpx(q[0]), fpy(q[1])); }
       x.stroke();
     }
@@ -804,17 +789,15 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       var E = HP.endpt, kk = s.k, gr = HP.groups[9][kk], ends = [];
       for (a = 0; a < A; a++) {
         var col = 'rgba(' + teamRGB(a) + ',' + (.95 * s.show) + ')';
-        x.strokeStyle = col; x.lineWidth = 2.2; x.shadowColor = col; x.shadowBlur = 10; x.beginPath(); x.moveTo(fpx(HP.pos0[a][0]), fpy(HP.pos0[a][1]));
+        x.strokeStyle = col; x.lineWidth = 1.6; x.shadowColor = col; x.shadowBlur = 8; x.beginPath(); x.moveTo(fpx(HP.pos0[a][0]), fpy(HP.pos0[a][1]));
         for (f = 0; f < F; f++) { var j = sIdx(9, kk, a, f); x.lineTo(fpx(HP.pos0[a][0] + E[j]), fpy(HP.pos0[a][1] + E[j + 1])); }
         x.stroke(); var je = sIdx(9, kk, a, F - 1); ends.push([HP.pos0[a][0] + E[je], HP.pos0[a][1] + E[je + 1]]);
       }
       x.globalCompositeOperation = 'source-over';
-      [5, 3, 2].forEach(function (z) {
-        var poly = hullPts(gr[SIZES.indexOf(z)].map(function (m) { return ends[m]; }), HULL_R[z]);
-        x.beginPath(); poly.forEach(function (p, i) { if (i) x.lineTo(fpx(p[0]), fpy(p[1])); else x.moveTo(fpx(p[0]), fpy(p[1])); }); x.closePath();
-        x.globalAlpha = .16 * s.show; x.fillStyle = HULL_GLOW[z]; x.shadowBlur = 0; x.fill();
-        x.globalAlpha = s.show; x.strokeStyle = HULL_GLOW[z]; x.lineWidth = 2; x.shadowColor = HULL_GLOW[z]; x.shadowBlur = 16; x.stroke();
-      });
+      var poly = hullPts(gr[SIZES.indexOf(3)].map(function (m) { return ends[m]; }), HULL_R[3]);      // one group: its most-supported group of three
+      x.beginPath(); poly.forEach(function (p, i) { if (i) x.lineTo(fpx(p[0]), fpy(p[1])); else x.moveTo(fpx(p[0]), fpy(p[1])); }); x.closePath();
+      x.globalAlpha = .14 * s.show; x.fillStyle = '#F5BE45'; x.shadowBlur = 0; x.fill();
+      x.globalAlpha = s.show; x.strokeStyle = '#F5BE45'; x.lineWidth = 2.2; x.shadowColor = '#F5BE45'; x.shadowBlur = 18; x.stroke();
       x.shadowBlur = 0; x.globalAlpha = 1;
     }
     x.globalCompositeOperation = 'source-over';
@@ -916,7 +899,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       if (a === BALL) { ctx.save(); ctx.translate(X, Y); ctx.rotate(Math.PI / 4); ctx.fillStyle = BALLC; ctx.strokeStyle = '#7A5608'; ctx.lineWidth = 1; ctx.fillRect(-rN * .6, -rN * .6, rN * 1.2, rN * 1.2); ctx.strokeRect(-rN * .6, -rN * .6, rN * 1.2, rN * 1.2); ctx.restore(); continue; }
       ctx.beginPath(); ctx.arc(X, Y, rN, 0, 2 * Math.PI);
       ctx.fillStyle = a < NT ? TEAM_A : '#FFFFFF'; ctx.fill(); ctx.lineWidth = a < NT ? 1.2 : 1.8; ctx.strokeStyle = a < NT ? '#FFFFFF' : TEAM_B; ctx.stroke();
-      ctx.fillStyle = a < NT ? '#FFFFFF' : TEAM_B; ctx.font = '700 ' + Math.round(rN * 1.15) + 'px Archivo, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = a < NT ? '#FFFFFF' : TEAM_B; ctx.font = '600 ' + Math.round(rN * 1.15) + 'px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(String(a < NT ? a + 1 : a - NT + 1), X, Y + .5);
     }
     hud.hidden = false; hud.textContent = 't = ' + tau.toFixed(2) + ' · Euler step ' + (step + 1) + ' of 10';
@@ -926,8 +909,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     if (!P) return;
     var step = curStep(), gr = P.groups[step][sel], key = P.id + '|' + sel + '|' + step;
     if (key === roKey) return; roKey = key;
-    nowEl.innerHTML = 'Play <b>' + P.id + '</b> · hypothesis with score rank <b>' + P.rank[sel] + '</b> · joint ADE <b>' + P.ade[sel].toFixed(2) + ' m</b>' + (sel === P.best ? ' · <b>lowest joint error of the 20</b>' : '') +
-      '<br><span style="color:var(--muted);font-size:.85rem">On this play, two hypotheses differ in ' + Math.round(P.differ * 100) + '% of their 2–4 s hyperedges at the last step.</span>';
+    nowEl.innerHTML = 'Play <b>' + P.id + '</b> · score rank <b>' + P.rank[sel] + '</b> · joint ADE <b>' + P.ade[sel].toFixed(2) + ' m</b>' + (sel === P.best ? ' · <b>best of 20</b>' : '') +
+      '<br><span style="color:var(--muted);font-size:.85rem">Two hypotheses differ in ' + Math.round(P.differ * 100) + '% of their 2–4 s hyperedges.</span>';
     groupsEl.innerHTML = SIZES.map(function (z, zi) { return '<div class="grp"><span class="sw" style="border-color:' + SIZE_COL[z] + ';background:' + SIZE_COL[z] + '22"></span>Group of ' + z + ': ' + gr[zi].map(agentName).join(' · ') + '</div>'; }).join('');
   }
   function buildHyps() {
@@ -989,6 +972,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     loadPlay(0);
     if (playing) startLoop();
     HP = PLAYS.filter(function (p) { return p.id === 213; })[0] || PLAYS[0];
+    HP.heroKs = [];                                                   // top-scored hypotheses whose groups of three differ
+    HP.byRank.slice(0, 8).forEach(function (k) { var g = HP.groups[9][k][1].join(','); if (HP.heroKs.length < 3 && HP.heroKs.every(function (j) { return HP.groups[9][j][1].join(',') !== g; })) HP.heroKs.push(k); });
     drawFloor(heroClock()); startHero();
   }).catch(function () {
     document.getElementById('loading').textContent = 'The flow states could not be loaded. Reload the page to try again.';
