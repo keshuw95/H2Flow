@@ -6,7 +6,7 @@
 <title>H²Flow · Groups Shape Futures, Futures Define Groups</title>
 <meta name="description" content="H²Flow lets each predicted future form its own groups: hypothesis-conditioned hypergraph flow matching for collective motion forecasting on basketball, American football, soccer, and pedestrian data.">
 <meta name="author" content="Rui Gan, Jiaxi Liu, Zheng Li, Sixu Li, Zihao Li, Keshu Wu, Yang Zhou, Xiaopeng Li">
-<meta name="theme-color" content="#08101D">
+<meta name="theme-color" content="#070C16">
 <link rel="canonical" href="https://keshuw95.github.io/H2Flow/">
 <link rel="icon" type="image/svg+xml" href="static/favicon.svg">
 <meta property="og:type" content="website">
@@ -22,430 +22,428 @@
 <meta name="twitter:image" content="https://keshuw95.github.io/H2Flow/static/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=JetBrains+Mono:wght@400&display=swap">
+<script>
+document.documentElement.classList.add('js');
+</script>
 <style>
-/* Layout: a night-court hero (always dark) with a tilted live court, then a 70rem reading column on warm paper; paper figures and clips sit on light "print" cards in both themes.
-   Type: Newsreader (serif) for the wordmark, headings and key numbers; Inter for text and interface; JetBrains Mono only for data readouts. */
+/* H²Flow project page.
+   Layout: a dark cover (title, authors, links, and the live court as a tilted stage), a white editorial body with
+   figures set directly on the page, a dark video section, and a dark footer. Type: Newsreader for the title, headings
+   and key numbers; Inter for text and interface; JetBrains Mono only for the BibTeX block. */
 :root {
-  --bg: #F7F6F2;
-  --surface: #FFFFFF;
-  --ink: #121A27;
-  --ink-2: #4A5363;
-  --muted: #7B818C;
-  --rule: #E3E1DB;
-  --chip: #EFEDE8;
-  --accent: #2B66A8;
+  --bg: #FFFFFF;
+  --bg-soft: #F5F5F2;
+  --ink: #14171E;
+  --ink-2: #4A505B;
+  --muted: #858B95;
+  --rule: #E8E7E2;
+  --rule-2: #D6D5CF;
+  --link: #2A5A96;
   --ours: #1F3B63;
-  --other: #A7B0BD;
-  --figcard: #FBFAF7;
-  --shadow: 0 1px 2px rgba(18,26,39,.04), 0 10px 30px rgba(18,26,39,.06);
-  --gold: #C2952B;
-  --h1: #6B4FBB; --h2: #2E9A6B; --h3: #D9A21B;      /* hypothesis colours of Fig. 1 */
-  --night: #08101D;                                /* hero, nav, footer: always dark */
-  --f-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
-  --f-display: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --other: #B6BDC7;
+  --tint: rgba(31, 59, 99, .065);
+  --gold: #B4861C;
+  --h1: #6B4FBB; --h2: #2E9A6B; --h3: #D9A21B;
+  --court: #F7F8FA;
+  --night: #070C16;
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --wide: 72rem;
+  --nav: 60px;
+  --gut: clamp(16px, 4vw, 32px);
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0A101B; --surface: #111A29; --ink: #E6ECF5; --ink-2: #AEB8C7; --muted: #828DA0; --rule: #223047;
-    --chip: #1A2537; --accent: #84B4EE; --ours: #8DB6EC; --other: #56627A; --gold: #E0B653;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 36px rgba(0,0,0,.4);
+    --bg: #0B0F16; --bg-soft: #121822; --ink: #E8ECF2; --ink-2: #AFB7C4; --muted: #7E8795; --rule: #1E2531; --rule-2: #2B3341;
+    --link: #9DBDEB; --ours: #9DBDEB; --other: #4C5667; --tint: rgba(157, 189, 235, .08); --gold: #E7B64E;
+    --h1: #A08BE6; --h2: #5CC79A; --h3: #E9BE52; --court: #0F1521;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0A101B; --surface: #111A29; --ink: #E6ECF5; --ink-2: #AEB8C7; --muted: #828DA0; --rule: #223047;
-  --chip: #1A2537; --accent: #84B4EE; --ours: #8DB6EC; --other: #56627A; --gold: #E0B653;
-  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 14px 36px rgba(0,0,0,.4);
+  --bg: #0B0F16; --bg-soft: #121822; --ink: #E8ECF2; --ink-2: #AFB7C4; --muted: #7E8795; --rule: #1E2531; --rule-2: #2B3341;
+  --link: #9DBDEB; --ours: #9DBDEB; --other: #4C5667; --tint: rgba(157, 189, 235, .08); --gold: #E7B64E;
+  --h1: #A08BE6; --h2: #5CC79A; --h3: #E9BE52; --court: #0F1521;
   color-scheme: dark;
 }
+
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-padding-top: 72px; }
+html { scroll-padding-top: calc(var(--nav) + 12px); -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16.5px; line-height: 1.65; -webkit-font-smoothing: antialiased; font-feature-settings: "cv11", "ss01"; }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 40; background: var(--night); }
-a { color: var(--accent); text-underline-offset: 2px; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-.wrap { max-width: 70rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
-h1, h2, h3 { font-family: var(--f-serif); text-wrap: balance; margin: 0; letter-spacing: -.012em; font-weight: 500; }
-h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-weight: 500; line-height: 1.12; }
-h3 { font-size: 1.22rem; font-weight: 600; line-height: 1.3; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16.5px/1.7 var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-feature-settings: "cv11", "ss01"; }
+img, video, canvas { display: block; max-width: 100%; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 500; letter-spacing: -.015em; text-wrap: balance; }
 p { margin: 0; }
-.eyebrow { font-family: var(--f-display); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: .75rem; }
-.eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); flex: none; }
-.lede { font-size: 1.06rem; color: var(--ink-2); max-width: 40rem; line-height: 1.6; }
-.sec-head { display: grid; gap: .85rem; margin-bottom: 2.4rem; }
-sup.two { font-size: .58em; vertical-align: .62em; line-height: 0; }
+sup.two { font-size: .6em; vertical-align: .62em; line-height: 0; }
+[hidden] { display: none !important; }
+.wrap { max-width: var(--wide); margin: 0 auto; padding-left: max(var(--gut), env(safe-area-inset-left, 0px)); padding-right: max(var(--gut), env(safe-area-inset-right, 0px)); }
 
-/* ---------- nav (always dark glass) */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(8,16,29,.8); -webkit-backdrop-filter: blur(14px) saturate(150%); backdrop-filter: blur(14px) saturate(150%); border-bottom: 1px solid rgba(255,255,255,.07); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 56px; }
-.brand { font-family: var(--f-serif); font-weight: 600; font-size: 1.25rem; color: #EAF1FF; text-decoration: none; letter-spacing: -.01em; }
-.brand sup { color: #F5BE45; font-size: .55em; vertical-align: .7em; line-height: 0; }
-.navlinks { display: flex; gap: .2rem; align-items: center; }
-.navlinks a { font-family: var(--f-display); font-size: .84rem; font-weight: 500; color: #B7C4DA; text-decoration: none; padding: .4rem .75rem; border-radius: 999px; }
-.navlinks a:hover { color: #FFFFFF; background: rgba(255,255,255,.07); }
-.navlinks .cta { color: #0B1424; background: #F5BE45; }
-.navlinks .cta:hover { color: #0B1424; background: #FFD06A; }
-@media (max-width: 720px) { .navlinks a:not(.cta) { display: none; } }
+/* sections and headings */
+.sec > .wrap { padding-block: clamp(4.5rem, 9vw, 7.2rem); }
+.band { background: var(--bg-soft); }
+.sh { display: grid; justify-items: center; text-align: center; gap: .9rem; margin: 0 auto clamp(2.4rem, 5vw, 3.6rem); max-width: 40rem; }
+.sh h2 { font-size: clamp(2rem, 3.4vw, 2.7rem); line-height: 1.08; font-variation-settings: "opsz" 60; }
+.sh h2::before { content: ""; display: block; width: 28px; height: 2px; border-radius: 2px; background: var(--gold); margin: 0 auto 1.2rem; }
+.lede { font-size: 1.02rem; line-height: 1.65; color: var(--ink-2); text-wrap: pretty; }
+.label { font: 600 .7rem/1 var(--sans); letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
 
-/* ---------- hero (always dark) */
-.hero { position: relative; overflow: hidden; background: radial-gradient(1100px 600px at 78% 40%, #173563 0%, rgba(23,53,99,0) 62%), radial-gradient(700px 420px at 92% 90%, rgba(217,162,27,.16), rgba(217,162,27,0) 70%), linear-gradient(180deg, #08101D 0%, #0A1526 100%); color: #EAF1FF; isolation: isolate; }
-.floor { position: absolute; z-index: -1; top: -6%; right: -14%; width: 86%; height: 112%; transform: perspective(1500px) rotateX(50deg) rotateZ(-9deg) scale(1.08); transform-origin: 50% 58%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 86%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 34%, #000 86%, transparent 100%); }
-.floor canvas { width: 100%; height: 100%; display: block; }
-.scrim { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(8,16,29,.94) 0%, rgba(8,16,29,.86) 36%, rgba(8,16,29,.35) 56%, rgba(8,16,29,0) 70%); }
-@media (max-width: 860px) { .scrim { background: linear-gradient(180deg, rgba(8,16,29,.35) 0%, rgba(8,16,29,.88) 34%, rgba(8,16,29,.94) 100%); } }
-.hero-in { position: relative; display: grid; gap: 1.25rem; padding-block: clamp(4rem, 10vw, 7.5rem) clamp(3rem, 7vw, 5.5rem); }
-.mark { font-family: var(--f-serif); font-weight: 600; font-variation-settings: "opsz" 72; font-size: clamp(3.6rem, 11vw, 7.6rem); line-height: .92; letter-spacing: -.025em; background: linear-gradient(100deg, #FFFFFF 0%, #DCE7FF 38%, #FFE2A0 50%, #DCE7FF 62%, #FFFFFF 100%); background-size: 260% 100%; background-position: 0% 0; -webkit-background-clip: text; background-clip: text; color: transparent; }
-.mark sup { font-size: .5em; vertical-align: .8em; line-height: 0; color: #F5BE45; -webkit-text-fill-color: #F5BE45; }
-@media (prefers-reduced-motion: no-preference) { .mark { animation: sheen 3.2s cubic-bezier(.4,0,.2,1) .3s 1 both; } }
-@keyframes sheen { from { background-position: 100% 0; } to { background-position: 0% 0; } }
-.hero h1 { font-size: clamp(2rem, 4.2vw, 3.15rem); font-weight: 500; line-height: 1.08; max-width: 20ch; color: #FFFFFF; }
-.hero .sub { font-family: var(--f-display); font-size: clamp(1rem, 1.8vw, 1.18rem); font-weight: 400; color: #AEBBD0; max-width: 34rem; line-height: 1.5; }
-.authors { font-family: var(--f-display); line-height: 1.7; max-width: 44rem; }
-.authors .names { display: flex; flex-wrap: wrap; gap: .1rem 1.1rem; font-weight: 500; color: #FFFFFF; }
-.authors sup { font-weight: 500; color: #8FA3C2; font-size: .7em; }
-.authors .aff { color: #93A3BC; font-size: .82rem; display: flex; flex-wrap: wrap; gap: .2rem 1.2rem; margin-top: .3rem; }
-.btns { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .4rem; }
-.btn { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--f-display); font-weight: 600; font-size: .88rem; padding: .62rem 1.05rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.04); color: #EAF1FF; text-decoration: none; cursor: pointer; }
-.btn:hover { background: rgba(255,255,255,.1); }
-.btn.gold { background: #F5BE45; border-color: #F5BE45; color: #0B1424; box-shadow: 0 4px 18px rgba(245,190,69,.22); }
-.btn.gold:hover { background: #FFD06A; }
-.btn[aria-disabled="true"] { color: #8193AE; cursor: default; }
-.btn[aria-disabled="true"]:hover { background: rgba(255,255,255,.05); }
-.btn small { font-weight: 500; font-size: .74rem; color: #8193AE; }
-.btn svg { width: 16px; height: 16px; flex: none; }
-@media (max-width: 860px) {
-  .floor { top: 0; right: -30%; width: 140%; height: 70%; opacity: .55; }
+/* reveal on scroll (only with JS and motion allowed) */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .rv { opacity: 0; transform: translateY(14px); transition: opacity .9s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1); }
+  html.js .rv.in { opacity: 1; transform: none; }
 }
 
-/* ---------- demo */
-.stage { border: 1px solid var(--rule); background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); padding: clamp(.7rem, 1.6vw, 1.2rem); display: grid; gap: .95rem; }
-.stage-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem; padding: .2rem .3rem 0; }
-.stage-title { font-family: var(--f-display); font-weight: 600; font-size: .95rem; display: flex; align-items: center; gap: .55rem; }
-.live { width: 8px; height: 8px; border-radius: 50%; background: #E3A51C; box-shadow: 0 0 0 3px rgba(227,165,28,.25); }
-@media (prefers-reduced-motion: no-preference) { .live { animation: pulse 1.8s ease-in-out infinite; } }
-@keyframes pulse { 50% { box-shadow: 0 0 0 7px rgba(227,165,28,0); } }
-.seg { display: inline-flex; background: var(--chip); border-radius: 999px; padding: 3px; gap: 2px; flex-wrap: wrap; }
-.seg button { font-family: var(--f-display); font-size: .8rem; font-weight: 500; border: 0; background: transparent; color: var(--ink-2); padding: .38rem .85rem; border-radius: 999px; cursor: pointer; }
-.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.14); }
-.court-wrap { position: relative; background: var(--figcard); border-radius: 12px; overflow: hidden; aspect-ratio: 30.6 / 16.6; max-width: 100%; }
-#court { display: block; width: 100%; height: 100%; }
-.court-loading { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--f-display); color: #7B818C; font-size: .88rem; }
-.hud { position: absolute; left: 12px; top: 10px; font-family: var(--f-mono); font-size: .76rem; color: #2A3445; background: rgba(247,248,250,.86); padding: .25rem .55rem; border-radius: 6px; pointer-events: none; font-variant-numeric: tabular-nums; }
-.controls { display: grid; grid-template-columns: auto 1fr; gap: .7rem 1rem; align-items: center; padding: 0 .3rem; }
-.playbtn { width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--ours); color: var(--bg); display: grid; place-items: center; cursor: pointer; }
-.playbtn svg { width: 16px; height: 16px; }
-.scrub { display: grid; gap: .25rem; min-width: 0; }
-.scrub input { width: 100%; accent-color: var(--ours); }
-.ticks { display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: .68rem; color: var(--muted); }
-.hyp-row { display: grid; gap: .45rem; padding: 0 .3rem; }
-.hyp-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .3rem 1rem; font-family: var(--f-display); font-size: .82rem; color: var(--muted); }
-.hyps { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); gap: 4px; }
-.hyps button { font-family: var(--f-display); font-size: .76rem; font-weight: 600; font-variant-numeric: tabular-nums; border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2); border-radius: 7px; padding: .38rem 0 .3rem; cursor: pointer; display: grid; gap: 1px; justify-items: center; position: relative; min-width: 0; transition: background .15s, border-color .15s; }
+/* ---------------------------------------------------------------- nav */
+.nav { position: fixed; inset: 0 0 auto; z-index: 40; padding-top: env(safe-area-inset-top, 0px); color: var(--ink); background: rgba(255, 255, 255, .86); -webkit-backdrop-filter: saturate(160%) blur(14px); backdrop-filter: saturate(160%) blur(14px); border-bottom: 1px solid var(--rule); transition: background-color .35s, border-color .35s, color .35s; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .nav { background: rgba(11, 15, 22, .84); } }
+:root[data-theme="dark"] .nav { background: rgba(11, 15, 22, .84); }
+.nav.over { background: transparent; border-bottom-color: transparent; color: #E9EEF7; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.nav .wrap { height: var(--nav); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand { font: 600 1.22rem/1 var(--serif); color: inherit; text-decoration: none; letter-spacing: -.01em; }
+.brand sup { color: var(--gold); font-size: .56em; vertical-align: .72em; line-height: 0; }
+.nav.over .brand sup { color: #F2B84B; }
+.links { display: flex; gap: .1rem; }
+.links a { font: 500 .85rem/1 var(--sans); color: inherit; opacity: .7; text-decoration: none; padding: .55rem .72rem; border-radius: 999px; transition: opacity .2s; }
+.links a:hover { opacity: 1; }
+@media (max-width: 760px) { .links a:not(.keep) { display: none; } }
+
+/* ---------------------------------------------------------------- cover */
+.hero { position: relative; overflow: hidden; color: #E9EEF7; isolation: isolate;
+  background: radial-gradient(58% 46% at 50% 80%, rgba(38, 80, 152, .46) 0%, rgba(38, 80, 152, 0) 72%),
+              radial-gradient(36% 26% at 50% 100%, rgba(242, 184, 75, .10) 0%, rgba(242, 184, 75, 0) 72%),
+              linear-gradient(180deg, #060A13 0%, #091222 100%);
+  padding-top: calc(var(--nav) + env(safe-area-inset-top, 0px) + clamp(2.4rem, 6vw, 4.6rem)); }
+.hero-txt { display: grid; justify-items: center; text-align: center; gap: 1.1rem; position: relative; z-index: 1; }
+.mark { display: inline-flex; align-items: center; gap: .8rem; font: 600 clamp(1.3rem, 2vw, 1.55rem)/1 var(--serif); letter-spacing: -.01em; color: #FFFFFF; }
+.mark::before, .mark::after { content: ""; width: 26px; height: 1px; background: rgba(242, 184, 75, .65); }
+.mark sup { color: #F2B84B; font-size: .56em; vertical-align: .74em; line-height: 0; }
+.hero h1 { font-size: clamp(2.2rem, 5.3vw, 4.3rem); line-height: 1.05; letter-spacing: -.026em; color: #F6F8FC; font-variation-settings: "opsz" 72; }
+.hero h1 span { display: inline-block; }
+.sub { font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.5; color: #9DAECA; max-width: 36rem; }
+.authors { display: flex; flex-wrap: wrap; justify-content: center; gap: .1rem 1.15rem; max-width: 46rem; margin-top: .5rem; font-weight: 500; font-size: .98rem; color: #E9EEF7; }
+.authors sup { color: #7F93B3; font-size: .68em; margin-left: 1px; }
+.aff { display: flex; flex-wrap: wrap; justify-content: center; gap: .15rem 1.3rem; margin-top: -.45rem; font-size: .84rem; color: #8193AF; }
+.aff sup { font-size: .72em; margin-right: 1px; }
+.btns { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: .55rem; }
+.btn { display: inline-flex; align-items: center; gap: .5rem; font: 600 .88rem/1 var(--sans); padding: .72rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .16); background: rgba(255, 255, 255, .04); color: #EAF1FF; text-decoration: none; cursor: pointer; transition: background .2s; }
+.btn:hover { background: rgba(255, 255, 255, .09); }
+.btn.gold { background: #F2B84B; border-color: #F2B84B; color: #0B1424; }
+.btn.gold:hover { background: #FFCC66; }
+.btn[aria-disabled="true"] { color: #8193AE; cursor: default; }
+.btn[aria-disabled="true"]:hover { background: rgba(255, 255, 255, .04); }
+.btn small { font-weight: 500; font-size: .74rem; color: #6F82A0; }
+.btn svg { width: 15px; height: 15px; flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-txt > * { animation: rise 1s cubic-bezier(.2, .7, .2, 1) both; }
+  .hero-txt > :nth-child(2) { animation-delay: .08s; } .hero-txt > :nth-child(3) { animation-delay: .16s; }
+  .hero-txt > :nth-child(4) { animation-delay: .24s; } .hero-txt > :nth-child(5) { animation-delay: .28s; } .hero-txt > :nth-child(6) { animation-delay: .34s; }
+  .stage { animation: fade 1.6s ease .3s both; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.stage { position: relative; height: clamp(230px, 34vw, 470px); margin-top: clamp(.4rem, 2vw, 1.4rem); perspective: 1700px; perspective-origin: 50% 0%; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent 100%); mask-image: linear-gradient(180deg, #000 82%, transparent 100%); }
+.floor { position: absolute; left: 50%; top: 50%; width: min(1240px, 128vw); aspect-ratio: 33 / 18; transform: translate(-50%, -50%) rotateX(44deg);
+  -webkit-mask-image: radial-gradient(closest-side, #000 74%, transparent 100%); mask-image: radial-gradient(closest-side, #000 74%, transparent 100%); }
+.floor canvas { width: 100%; height: 100%; }
+.phase { display: flex; justify-content: center; align-items: center; gap: .85rem; padding: .2rem 0 clamp(2.2rem, 4.5vw, 3.2rem); font: 600 .68rem/1 var(--sans); letter-spacing: .17em; text-transform: uppercase; color: #4E5D76; }
+.phase i { width: 26px; height: 1px; background: #26344B; }
+.phase span { transition: color .5s; }
+.phase span.on { color: #F2C46A; }
+@media (max-width: 640px) { .floor { width: 175vw; transform: translate(-50%, -50%) rotateX(50deg); } .phase { gap: .55rem; letter-spacing: .12em; } .phase i { width: 14px; } }
+
+/* ---------------------------------------------------------------- overview */
+.statement { font: 400 clamp(1.75rem, 3.5vw, 2.75rem)/1.17 var(--serif); letter-spacing: -.018em; text-align: center; max-width: 25em; margin: 0 auto; text-wrap: balance; }
+.statement em { font-style: italic; color: var(--ours); }
+.ov { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: clamp(2rem, 5.5vw, 5rem); align-items: center; margin-top: clamp(3rem, 6.5vw, 4.6rem); }
+.contrib { display: grid; gap: 1.1rem; }
+.hl { list-style: none; margin: 0; padding: 0; display: grid; }
+.hl li { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .9rem; padding: 1.3rem 0 1.35rem; border-top: 1px solid var(--rule-2); }
+.hl li:last-child { border-bottom: 1px solid var(--rule-2); }
+.hl .n { font: italic 400 1.75rem/1 var(--serif); color: var(--gold); font-variant-numeric: lining-nums; margin-top: -.05rem; }
+.hl h3 { font-size: 1.3rem; line-height: 1.25; margin-bottom: .4rem; font-variation-settings: "opsz" 36; }
+.hl p { font-size: .95rem; line-height: 1.65; color: var(--ink-2); text-wrap: pretty; }
+@media (max-width: 880px) { .ov { grid-template-columns: 1fr; } }
+
+/* figures: on the white page in light mode, on white cards in dark mode */
+.fig { margin: 0; display: grid; gap: .9rem; }
+.pic { border-radius: 12px; overflow: hidden; }
+.pic img { width: 100%; height: auto; background: #FFFFFF; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pic { background: #FFFFFF; padding: clamp(.45rem, 1.3vw, .9rem); } }
+:root[data-theme="dark"] .pic { background: #FFFFFF; padding: clamp(.45rem, 1.3vw, .9rem); }
+figcaption { font-size: .86rem; line-height: 1.6; color: var(--muted); max-width: 58rem; }
+figcaption b { color: var(--ink); font-weight: 600; }
+
+/* ---------------------------------------------------------------- demo */
+.demo { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(1.2rem, 2.5vw, 2rem); align-items: start; }
+.court { position: relative; aspect-ratio: 30.6 / 16.6; border-radius: 14px; overflow: hidden; background: var(--court); box-shadow: 0 0 0 1px var(--rule); }
+#court { width: 100%; height: 100%; }
+.loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: .88rem; color: var(--muted); }
+.court-foot { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; align-items: center; margin-top: .9rem; font-size: .8rem; color: var(--muted); }
+.court-foot i { display: inline-block; vertical-align: -1px; margin-right: .4rem; }
+.k-a { width: 11px; height: 11px; border-radius: 50%; background: #1F3B63; }
+.k-b { width: 11px; height: 11px; border-radius: 50%; background: #FFFFFF; border: 2px solid #B0244A; }
+.k-ball { width: 9px; height: 9px; background: #E3A51C; transform: rotate(45deg); }
+.k-bead { width: 12px; height: 10px; background-image: radial-gradient(#8C96A6 1.2px, transparent 1.5px); background-size: 4px 4px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .k-a { background: #86AEE8; } :root:not([data-theme="light"]) .k-b { background: transparent; border-color: #F07D9B; } :root:not([data-theme="light"]) .k-ball { background: #F2B84B; } }
+:root[data-theme="dark"] .k-a { background: #86AEE8; } :root[data-theme="dark"] .k-b { background: transparent; border-color: #F07D9B; } :root[data-theme="dark"] .k-ball { background: #F2B84B; }
+.panel { display: grid; gap: 1.5rem; }
+.ctl { display: grid; gap: .6rem; }
+.ctl .label { display: flex; justify-content: space-between; gap: .5rem; }
+.ctl .label span { font-weight: 500; letter-spacing: .04em; text-transform: none; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; background: var(--bg-soft); border-radius: 999px; box-shadow: inset 0 0 0 1px var(--rule); justify-self: start; }
+.seg button { font: 500 .8rem/1 var(--sans); border: 0; background: transparent; color: var(--ink-2); padding: .52rem .82rem; border-radius: 999px; cursor: pointer; }
+.seg button:hover { color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--bg); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 0 0 1px var(--rule-2); }
+.flow { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .8rem; align-items: center; }
+.playbtn { width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--ours); color: var(--bg); display: grid; place-items: center; cursor: pointer; }
+.playbtn svg { width: 14px; height: 14px; }
+.flow input { width: 100%; margin: 0; accent-color: var(--ours); }
+.ticks { display: flex; justify-content: space-between; font-size: .72rem; color: var(--muted); margin-top: -.25rem; padding-left: calc(38px + .8rem); }
+.hyps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+.hyps button { position: relative; display: grid; justify-items: center; gap: 1px; min-width: 0; padding: .4rem 0 .32rem; font: 600 .8rem/1.2 var(--sans); font-variant-numeric: tabular-nums; color: var(--ink-2); background: var(--bg); border: 1px solid var(--rule-2); border-radius: 8px; cursor: pointer; transition: border-color .15s, background .15s; }
+.hyps button span { font-weight: 400; font-size: .64rem; color: var(--muted); }
 .hyps button:hover { border-color: var(--ours); }
-.hyps button span { font-weight: 400; font-size: .62rem; color: var(--muted); }
 .hyps button[aria-pressed="true"] { background: var(--ours); border-color: var(--ours); color: var(--bg); }
 .hyps button[aria-pressed="true"] span { color: var(--bg); opacity: .8; }
-.hyps button.best::after { content: ""; position: absolute; top: -4px; right: -4px; width: 9px; height: 9px; border-radius: 50%; background: #E3A51C; border: 2px solid var(--surface); }
-.readout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: .8rem 1.4rem; padding: .2rem .3rem .3rem; }
-.readout .now { font-family: var(--f-display); font-size: .9rem; color: var(--ink-2); }
-.readout .now b { color: var(--ink); }
-.groups { display: grid; gap: .3rem; }
-.grp { display: flex; align-items: center; gap: .55rem; font-family: var(--f-mono); font-size: .78rem; color: var(--ink-2); flex-wrap: wrap; }
-.sw { width: 22px; height: 12px; border-radius: 6px; border: 2px solid; flex: none; }
-.legend { display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; font-family: var(--f-display); font-size: .8rem; color: var(--ink-2); padding: 0 .3rem; align-items: center; }
-.legend i { display: inline-block; vertical-align: -2px; margin-right: .35rem; }
-.dot-a { width: 12px; height: 12px; border-radius: 50%; background: #1F3B63; }
-.dot-b { width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid #B0244A; }
-.dia { width: 10px; height: 10px; background: #E3A51C; transform: rotate(45deg); }
-.bead { width: 10px; height: 10px; background-image: radial-gradient(#8C96A6 1.3px, transparent 1.6px); background-size: 4px 4px; }
-.toggle { display: inline-flex; align-items: center; gap: .4rem; cursor: pointer; }
-.toggle input { accent-color: var(--ours); margin: 0; }
-.caption { font-size: .86rem; color: var(--muted); line-height: 1.55; max-width: 62rem; padding: 0 .3rem .2rem; }
-@media (max-width: 760px) { .hyps { grid-template-columns: repeat(10, minmax(0, 1fr)); } .readout { grid-template-columns: 1fr; } }
+.hyps button.best::after { content: ""; position: absolute; top: -4px; right: -4px; width: 9px; height: 9px; border-radius: 50%; background: #E3A51C; border: 2px solid var(--bg); }
+.now { font-size: .86rem; line-height: 1.5; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.now b { color: var(--ink); font-weight: 600; }
+.groups { display: grid; gap: .45rem; }
+.grp { display: grid; grid-template-columns: 22px 3.2rem minmax(0, 1fr); gap: .55rem; align-items: center; font-size: .85rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.grp em { font-style: normal; color: var(--muted); }
+.sw { width: 22px; height: 12px; border-radius: 6px; border: 2px solid; }
+.toggle { display: inline-flex; align-items: center; gap: .5rem; font-size: .86rem; color: var(--ink-2); cursor: pointer; }
+.toggle input { margin: 0; accent-color: var(--ours); }
+.pnote { font-size: .8rem; line-height: 1.55; color: var(--muted); }
+@media (max-width: 960px) { .demo { grid-template-columns: 1fr; } .panel { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 2rem; } .hyps { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .panel { grid-template-columns: 1fr; } }
 
-/* ---------- gallery of loops */
-.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.4vw, 1.6rem); }
-.tile { margin: 0; display: grid; gap: .7rem; min-width: 0; align-content: start; }
+/* ---------------------------------------------------------------- method */
+.eqs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.9rem, 2vw, 1.4rem); margin-top: clamp(2.8rem, 5.5vw, 3.8rem); }
+.eqc { position: relative; display: grid; align-content: start; gap: .6rem; padding: 1.5rem 1.5rem 1.6rem; border-radius: 14px; background: var(--bg-soft); }
+.eqc::before { content: ""; width: 22px; height: 2px; border-radius: 2px; background: var(--gold); margin-bottom: .35rem; }
+.eqc h3 { font-size: 1.24rem; line-height: 1.25; font-variation-settings: "opsz" 36; }
+.eqc p { font-size: .93rem; line-height: 1.65; color: var(--ink-2); text-wrap: pretty; }
+@media (max-width: 900px) { .eqs { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------- results */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--rule); margin-bottom: clamp(3rem, 6vw, 4.2rem); }
+.stat { display: grid; gap: .5rem; align-content: start; padding: 1.7rem clamp(.9rem, 2vw, 1.5rem) 1.55rem; }
+.stat + .stat { border-left: 1px solid var(--rule); }
+.stat .v { font: 500 clamp(2.5rem, 4.4vw, 3.4rem)/1 var(--serif); letter-spacing: -.03em; color: var(--ours); font-variant-numeric: lining-nums; font-variation-settings: "opsz" 72; }
+.stat .l { font-size: .9rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+.stat .d { font-size: .8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+@media (max-width: 880px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat:nth-child(3) { border-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--rule); } }
+.ctrls { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 1rem; margin-bottom: 1.4rem; }
+.chartcard { margin: 0; padding: clamp(1.1rem, 2.6vw, 2rem) clamp(1rem, 2.8vw, 2.2rem) clamp(1rem, 2.2vw, 1.5rem); border-radius: 16px; background: var(--bg); box-shadow: 0 0 0 1px var(--rule), 0 1px 3px rgba(20, 23, 30, .04); }
+#charts { min-height: 260px; }
+#charts svg { display: block; overflow: visible; }
+#charts text { font-family: var(--sans); }
+.c-tick, .c-val, .c-gain { font-variant-numeric: tabular-nums; }
+#charts .c-title { font-family: var(--serif); font-size: 18px; font-weight: 500; fill: var(--ink); letter-spacing: -.01em; }
+.c-unit { fill: var(--muted); font-size: 11.5px; }
+.c-gain { fill: var(--muted); font-size: 12px; }
+.c-gain-v { fill: var(--ours); font-weight: 650; }
+.chartcard figcaption { max-width: none; margin-top: .9rem; padding-top: .85rem; border-top: 1px solid var(--rule); font-size: .8rem; }
+.c-band { fill: var(--tint); }
+.c-grid { stroke: var(--rule); stroke-width: 1; }
+.c-row { stroke: var(--rule-2); stroke-width: 1; stroke-dasharray: 1 3; }
+.c-ref { stroke: var(--ours); stroke-width: 1; stroke-dasharray: 3 3; opacity: .4; }
+.c-tick { fill: var(--muted); font-size: 10px; }
+.c-lab { fill: var(--ink-2); font-size: 11.5px; font-weight: 500; }
+.c-val { fill: var(--muted); font-size: 10.5px; }
+.c-lab.o, .c-val.o { fill: var(--ink); font-weight: 700; }
+.c-dot { fill: var(--other); stroke: var(--bg); stroke-width: 2; }
+.c-dot.o { fill: var(--ours); }
+.tip { position: fixed; z-index: 70; pointer-events: none; padding: .45rem .7rem; border-radius: 8px; background: var(--ink); color: var(--bg); font-size: .76rem; line-height: 1.5; white-space: nowrap; font-variant-numeric: tabular-nums; box-shadow: 0 8px 24px rgba(0, 0, 0, .18); }
+.tablebox { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; font-variant-numeric: tabular-nums; }
+th, td { padding: .66rem .85rem; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-bottom-color: var(--rule-2); }
+th:first-child, td:first-child { text-align: left; padding-left: .3rem; }
+td { color: var(--ink-2); }
+td:first-child { color: var(--ink); font-weight: 500; }
+td.venue { color: var(--muted); text-align: left; }
+th.venue { text-align: left; }
+tr.ours td { background: var(--tint); color: var(--ink); }
+tr.ours td:first-child { font-weight: 700; }
+td b { font-weight: 700; color: var(--ink); }
+td u { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.tnote { font-size: .8rem; color: var(--muted); margin-top: .8rem; }
+details { border-bottom: 1px solid var(--rule); }
+details:first-of-type { border-top: 1px solid var(--rule); margin-top: 2.4rem; }
+summary { list-style: none; cursor: pointer; position: relative; display: block; padding: 1.05rem 2.2rem 1.05rem .3rem; font-weight: 600; font-size: .98rem; color: var(--ink); }
+summary::-webkit-details-marker { display: none; }
+summary .s { font-weight: 400; font-size: .85rem; color: var(--muted); margin-left: .7rem; }
+summary::after { content: "+"; position: absolute; right: .3rem; top: 50%; transform: translateY(-50%); font: 300 1.4rem/1 var(--sans); color: var(--muted); }
+details[open] summary::after { content: "−"; }
+details > .tablebox { padding-bottom: 1.3rem; }
+details .tnote { margin: -.3rem 0 1.3rem; }
+.an { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; margin-top: clamp(4rem, 8vw, 5.5rem); }
+.an-t { display: grid; gap: 1rem; }
+.an-t h3 { font-size: clamp(1.5rem, 2.5vw, 1.9rem); line-height: 1.2; }
+.an-t p { color: var(--ink-2); }
+.hbars { display: grid; gap: .9rem; }
+.hbars .cap { font-size: .86rem; font-weight: 600; color: var(--ink); margin-bottom: .2rem; }
+.hbars .cap span { font-weight: 400; color: var(--muted); }
+.hb { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr) 3rem; gap: .9rem; align-items: center; font-size: .88rem; color: var(--ink-2); }
+.track { position: relative; height: 14px; border-left: 1px solid var(--rule-2); }
+.fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 4px 4px 0; background: var(--other); }
+.hb.own { color: var(--ink); font-weight: 600; }
+.hb.own .fill { background: var(--ours); }
+.val { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+.axis { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr) 3rem; gap: .9rem; font-size: .7rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.axis div { display: flex; justify-content: space-between; }
+@media (max-width: 880px) { .an { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .hb, .axis { grid-template-columns: 7.5rem minmax(0, 1fr) 2.6rem; gap: .6rem; } }
+
+/* ---------------------------------------------------------------- qualitative */
+.figs { display: grid; gap: clamp(3rem, 6vw, 4.2rem); }
+
+/* ---------------------------------------------------------------- videos (always dark) */
+.theater { background: var(--night); color: #E6ECF5; }
+.theater .sh h2 { color: #F4F7FC; }
+.theater .sh h2::before { background: #F2B84B; }
+.theater .lede { color: #93A4BF; }
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 2.8rem) clamp(1rem, 2.4vw, 1.6rem); }
+.tile { margin: 0; display: grid; gap: .85rem; align-content: start; min-width: 0; }
 .tile.wide { grid-column: 1 / -1; }
-.screen { position: relative; display: block; width: 100%; padding: 0; border: 1px solid var(--rule); background: #F4F2EE; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); cursor: zoom-in; }
-.screen video { display: block; width: 100%; height: auto; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-.screen:hover video { transform: scale(1.015); }
-.tile .tag { display: block; font-family: var(--f-display); font-size: .68rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-.screen .zoom { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; border-radius: 50%; background: rgba(10,20,36,.8); color: #fff; display: grid; place-items: center; opacity: 0; transition: opacity .2s; }
+.screen { position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: 12px; overflow: hidden; background: #F1F0EB; cursor: zoom-in; }
+.screen video { width: 100%; height: auto; }
+.screen .zoom { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(7, 12, 22, .78); color: #FFFFFF; opacity: 0; transition: opacity .2s; }
 .screen:hover .zoom, .screen:focus-visible .zoom { opacity: 1; }
 .screen .zoom svg { width: 15px; height: 15px; }
-.tile figcaption { display: grid; gap: .25rem; padding: .1rem .2rem 0; }
-.tile figcaption b { font-family: var(--f-serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
-.tile figcaption span { font-size: .88rem; color: var(--muted); line-height: 1.5; }
+.tile figcaption { display: grid; gap: .3rem; color: #8798B2; }
+.tile .tag { font: 600 .66rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: #6A7C99; }
+.tile b { font: 500 1.2rem/1.3 var(--serif); color: #F4F7FC; letter-spacing: -.01em; }
+.tile span { font-size: .87rem; line-height: 1.55; }
 @media (max-width: 720px) { .gallery { grid-template-columns: 1fr; } }
 
-/* ---------- idea + abstract */
-.thesis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
-.quote { font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.8rem, 3.4vw, 2.5rem); line-height: 1.18; letter-spacing: -.012em; }
-.quote em { font-style: italic; color: var(--ours); }
-.abstract { display: grid; gap: 1rem; font-size: 1rem; color: var(--ink-2); line-height: 1.7; }
-.abstract p { max-width: 38rem; }
-figure { margin: 0; display: grid; gap: .65rem; }
-.print { background: var(--figcard); border-radius: 14px; padding: clamp(.5rem, 1.5vw, 1rem); border: 1px solid var(--rule); box-shadow: var(--shadow); }
-.print img { display: block; width: 100%; height: auto; }
-figcaption { font-size: .86rem; color: var(--muted); line-height: 1.55; }
-figcaption b { color: var(--ink-2); font-family: var(--f-display); font-weight: 600; }
-@media (max-width: 860px) { .thesis { grid-template-columns: 1fr; } }
-
-/* ---------- method */
-.ideas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.8rem; }
-.idea { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.4rem 1.4rem 1.5rem; display: grid; gap: .7rem; align-content: start; }
-.idea .tag { font-family: var(--f-display); font-size: .66rem; font-weight: 600; letter-spacing: .14em; color: var(--c); }
-.idea p { font-size: .95rem; color: var(--ink-2); }
-.eq { font-family: var(--f-serif); font-style: italic; font-size: 1.12rem; color: var(--ink); background: var(--chip); border-radius: 8px; padding: .55rem .8rem; overflow-wrap: anywhere; line-height: 1.7; }
-.eq .up { font-style: normal; }
-@media (max-width: 860px) { .ideas { grid-template-columns: 1fr; } }
-
-/* ---------- results */
-.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-bottom: 2.2rem; }
-.stat { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.2rem 1.2rem 1.05rem; display: grid; gap: .35rem; position: relative; border-top: 2px solid var(--c); }
-.stat .v { font-family: var(--f-serif); font-weight: 500; font-size: clamp(2.2rem, 3.8vw, 2.9rem); line-height: 1; font-variant-numeric: lining-nums tabular-nums; color: var(--ink); letter-spacing: -.02em; }
-.stat .l { font-family: var(--f-display); font-size: .86rem; color: var(--ink-2); line-height: 1.4; }
-.stat .d { font-family: var(--f-display); font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; }
-@media (max-width: 860px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.chart-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .7rem; margin-bottom: 1rem; }
-.panels { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
-.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: .9rem .9rem .65rem; min-width: 0; }
-.panel h3 { font-size: 1rem; margin-bottom: .1rem; }
-.panel .unit { font-family: var(--f-display); font-size: .7rem; color: var(--muted); }
-.panel svg { display: block; width: 100%; height: auto; overflow: visible; }
-.panel .gain { font-family: var(--f-display); font-size: .74rem; color: var(--ink-2); margin-top: .2rem; font-variant-numeric: tabular-nums; }
-@media (max-width: 960px) { .panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .panels { grid-template-columns: 1fr; } }
-.tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg); font-family: var(--f-mono); font-size: .74rem; padding: .35rem .55rem; border-radius: 6px; z-index: 50; white-space: nowrap; }
-.tablebox { overflow-x: auto; border: 1px solid var(--rule); border-radius: 12px; background: var(--surface); margin-top: 1rem; }
-table { border-collapse: collapse; width: 100%; font-family: var(--f-display); font-size: .82rem; font-variant-numeric: tabular-nums; }
-th, td { padding: .45rem .7rem; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--rule); }
-th { font-family: var(--f-display); font-weight: 600; color: var(--ink-2); font-size: .78rem; letter-spacing: .02em; }
-th:first-child, td:first-child { text-align: left; }
-tr.ours td { background: color-mix(in srgb, var(--ours) 12%, transparent); font-weight: 600; color: var(--ink); }
-td.best { font-weight: 700; color: var(--ink); }
-td.second { text-decoration: underline; text-underline-offset: 3px; }
-tbody tr:last-child td { border-bottom: 0; }
-details { margin-top: 1.2rem; }
-summary { font-family: var(--f-display); font-weight: 600; cursor: pointer; color: var(--ink); padding: .45rem 0; }
-summary span { color: var(--muted); font-weight: 500; font-size: .88rem; }
-.note { font-size: .86rem; color: var(--muted); margin-top: .6rem; max-width: 52rem; }
-
-/* ---------- analysis */
-.analysis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
-.analysis p { color: var(--ink-2); max-width: 34rem; }
-.hbars { display: grid; gap: .8rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.4rem; }
-.hb { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 3rem; gap: .7rem; align-items: center; font-family: var(--f-display); font-size: .85rem; color: var(--ink-2); }
-.hb .track { height: 16px; position: relative; border-left: 1px solid var(--rule); }
-.hb .fill { position: absolute; left: 0; top: 1px; bottom: 1px; border-radius: 0 4px 4px 0; background: var(--other); }
-.hb.own .fill { background: var(--ours); }
-.hb .val { font-family: var(--f-display); font-size: .82rem; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
-.hb.own { color: var(--ink); font-weight: 600; }
-.axis01 { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 3rem; gap: .7rem; font-family: var(--f-mono); font-size: .68rem; color: var(--muted); }
-.axis01 div { display: flex; justify-content: space-between; }
-@media (max-width: 860px) { .analysis { grid-template-columns: 1fr; } }
-@media (max-width: 460px) { .hb, .axis01 { grid-template-columns: 7rem minmax(0, 1fr) 2.6rem; } }
-
-/* ---------- figures, cite, footer, lightbox */
-.figs { display: grid; gap: 2.4rem; }
-.bib { position: relative; background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; }
-.bib pre { margin: 0; padding: 1.2rem 1.3rem; overflow-x: auto; font-family: var(--f-mono); font-size: .8rem; line-height: 1.6; color: var(--ink-2); }
-.copy { position: absolute; top: .7rem; right: .7rem; font-family: var(--f-display); font-weight: 500; font-size: .78rem; border: 1px solid var(--rule); background: var(--bg); color: var(--ink); border-radius: 999px; padding: .32rem .85rem; cursor: pointer; }
-footer { background: var(--night); color: #8FA3C2; padding-block: 2.6rem 3.2rem; font-family: var(--f-display); font-size: .82rem; }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; }
-.lb { position: fixed; inset: 0; z-index: 60; background: rgba(4,8,16,.92); display: grid; place-items: center; padding: calc(env(safe-area-inset-top, 0px) + 60px) max(16px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(16px, env(safe-area-inset-left, 0px)); }
+/* ---------------------------------------------------------------- BibTeX, footer, overlays */
+#cite { border-top: 1px solid var(--rule); }
+.bib { position: relative; border-radius: 12px; background: var(--bg-soft); box-shadow: inset 0 0 0 1px var(--rule); }
+.bib pre { margin: 0; padding: 1.35rem 1.45rem; overflow-x: auto; font: 400 .8rem/1.7 var(--mono); color: var(--ink-2); }
+.copy { position: absolute; top: .8rem; right: .8rem; font: 500 .78rem/1 var(--sans); padding: .5rem .9rem; border-radius: 999px; border: 0; background: var(--bg); color: var(--ink); box-shadow: 0 0 0 1px var(--rule-2); cursor: pointer; }
+.copy:hover { box-shadow: 0 0 0 1px var(--ink-2); }
+footer { background: var(--night); color: #74859F; font-size: .84rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 2.4rem; padding-bottom: calc(2.6rem + env(safe-area-inset-bottom, 0px)); }
+footer .brand { color: #E9EEF7; }
+footer .brand sup { color: #F2B84B; }
+.lb { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; background: rgba(4, 8, 16, .93); padding: calc(env(safe-area-inset-top, 0px) + 60px) max(16px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 24px) max(16px, env(safe-area-inset-left, 0px)); }
 .lb-in { width: min(100%, 1280px); display: grid; gap: .8rem; }
-.lb video { width: 100%; max-height: 78vh; background: #000; border-radius: 12px; display: block; }
-.lb p { color: #C9D6EC; font-family: var(--f-display); font-size: .92rem; }
-.lb-close { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: max(16px, env(safe-area-inset-right, 0px)); width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: #fff; font-size: 1.1rem; cursor: pointer; }
-[hidden] { display: none !important; }                /* outside claude.ai: hidden must win over .lb / .tip display rules */
+.lb video { width: 100%; max-height: 78vh; border-radius: 12px; background: #000; }
+.lb p { font-size: .92rem; color: #C9D6EC; }
+.lb-close { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: max(16px, env(safe-area-inset-right, 0px)); width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .2); background: rgba(255, 255, 255, .08); color: #FFFFFF; font-size: 1.05rem; cursor: pointer; }
 </style>
 </head>
 <body>
-<nav class="top" aria-label="Sections">
+<nav class="nav over" id="nav" aria-label="Sections">
   <div class="wrap">
     <a class="brand" href="#top">H<sup>2</sup>Flow</a>
-    <div class="navlinks">
-      <a href="#demo">Demo</a><a href="#motion">Videos</a><a href="#method">Method</a><a href="#results">Results</a><a href="#cite">BibTeX</a>
-      <a class="cta" href="#top" data-overview>Video</a>
+    <div class="links">
+      <a href="#overview">Overview</a><a href="#videos" class="keep">Videos</a><a href="#results">Results</a><a href="#method">Method</a><a href="#demo">Demo</a><a href="#cite" class="keep">BibTeX</a>
     </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="floor" aria-hidden="true"><canvas id="floor"></canvas></div>
-  <div class="scrim" aria-hidden="true"></div>
-  <div class="wrap hero-in">
-    <div class="mark" aria-hidden="true">H<sup>2</sup>Flow</div>
-    <h1>Groups Shape Futures, Futures Define Groups</h1>
+  <div class="wrap hero-txt">
+    <div class="mark"><span>H<sup>2</sup>Flow</span></div>
+    <h1><span>Groups Shape Futures,</span> <span>Futures Define Groups</span></h1>
     <p class="sub">Hypothesis-Conditioned Hypergraph Flow Matching for Collective Motion Forecasting</p>
-    <div class="authors">
-      <div class="names"><span>Rui Gan<sup>1</sup></span><span>Jiaxi Liu<sup>1</sup></span><span>Zheng Li<sup>1</sup></span><span>Sixu Li<sup>1</sup></span><span>Zihao Li<sup>2</sup></span><span>Keshu Wu<sup>1</sup></span><span>Yang Zhou<sup>3</sup></span><span>Xiaopeng Li<sup>1</sup></span></div>
-      <div class="aff"><span><sup>1</sup>University of Wisconsin-Madison</span><span><sup>2</sup>Marquette University</span><span><sup>3</sup>Texas A&amp;M University</span></div>
-    </div>
+    <div class="authors"><span>Rui Gan<sup>1</sup></span><span>Jiaxi Liu<sup>1</sup></span><span>Zheng Li<sup>1</sup></span><span>Sixu Li<sup>1</sup></span><span>Zihao Li<sup>2</sup></span><span>Keshu Wu<sup>1</sup></span><span>Yang Zhou<sup>3</sup></span><span>Xiaopeng Li<sup>1</sup></span></div>
+    <div class="aff"><span><sup>1</sup>University of Wisconsin-Madison</span><span><sup>2</sup>Marquette University</span><span><sup>3</sup>Texas A&amp;M University</span></div>
     <div class="btns">
-      <button class="btn gold" type="button" data-overview><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.2v9.6L12.6 8z"/></svg>Video</button>
       <span class="btn" aria-disabled="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1.75h5.5L13 5.25v9H4z"/><path d="M9.5 1.75v3.5H13"/></svg>Paper <small>arXiv soon</small></span>
       <span class="btn" aria-disabled="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5"/></svg>Code <small>soon</small></span>
+      <a class="btn gold" href="#videos"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.2v9.6L12.6 8z"/></svg>Videos</a>
     </div>
   </div>
+  <div class="stage" aria-hidden="true"><div class="floor"><canvas id="floor"></canvas></div></div>
+  <div class="phase" aria-hidden="true"><span class="on">Noise</span><i></i><span>Flow matching</span><i></i><span>Hypothesis groups</span></div>
 </header>
 
-<section id="demo" aria-labelledby="demo-title">
+<main>
+<section class="sec" id="overview" aria-label="Overview">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Interactive demo</div>
-      <h2 id="demo-title">Flow States and Hypothesis Groups</h2>
-      <p class="lede">Move along the flow or select a hypothesis to see the groups it forms from its own predicted future.</p>
-    </div>
-    <div class="stage">
-      <div class="stage-top">
-        <div class="stage-title"><span class="live" aria-hidden="true"></span>NBA test plays</div>
-        <div class="seg" role="group" aria-label="NBA play" id="plays"></div>
+    <p class="statement rv">Hypothesis-conditioned groups: <em>every hypothesis forms the groups of the future it predicts.</em></p>
+    <div class="ov">
+      <figure class="fig rv">
+        <div class="pic"><img src="static/media/fig_teaser.webp" alt="Per-agent, group-aware and H2Flow forecasters: H2Flow forms groups of its future for every hypothesis" width="1320" height="956" loading="lazy"></div>
+        <figcaption><b>Figure 1.</b> Group-aware forecasters fix groups from the past for all futures; each hypothesis of H<sup class="two">2</sup>Flow forms the groups of its own future.</figcaption>
+      </figure>
+      <div class="contrib rv">
+        <h2 class="label">Contributions</h2>
+        <ol class="hl">
+          <li><span class="n">1</span><div><h3>Futures Define Groups</h3><p>Each hypothesis forms its own groups from its estimated future and updates them as the flow refines that estimate.</p></div></li>
+          <li><span class="n">2</span><div><h3>Groups Shape Futures</h3><p>Group tokens and a group-factorized endpoint couple interacting agents. A hyperedge-level winner-take-all loss selects a shared winner per group without group labels.</p></div></li>
+          <li><span class="n">3</span><div><h3>Accurate and Coherent Futures</h3><p>Lowest trajectory errors among the methods evaluated on NBA and NFL at every level, from single agents to whole scenes.</p></div></li>
+        </ol>
       </div>
-      <div class="court-wrap">
-        <canvas id="court" aria-label="NBA court with the flow states, the selected hypothesis and its groups"></canvas>
-        <div class="hud" id="hud" hidden></div>
-        <div class="court-loading" id="loading">Loading…</div>
-      </div>
-      <div class="controls">
-        <button class="playbtn" id="play" aria-label="Pause"><svg viewBox="0 0 16 16" fill="currentColor" id="playicon"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg></button>
-        <div class="scrub">
-          <input type="range" id="t" min="0" max="1000" value="0" aria-label="Flow time t">
-          <div class="ticks" aria-hidden="true"><span>t = 0 · noise</span><span>0.5</span><span>t = 1 · forecast</span></div>
-        </div>
-      </div>
-      <div class="hyp-row">
-        <div class="hyp-label"><span>Hypotheses by predicted score · joint ADE (m)</span><span><i style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#E3A51C;vertical-align:0;margin-right:.3rem"></i>best joint ADE</span></div>
-        <div class="hyps" id="hyps" role="group" aria-label="Hypothesis"></div>
-      </div>
-      <div class="readout">
-        <div class="now" id="now">&nbsp;</div>
-        <div class="groups" id="groups" aria-live="polite"></div>
-      </div>
-      <div class="legend">
-        <span><i class="dot-a"></i>Team A</span><span><i class="dot-b"></i>Team B</span><span><i class="dia"></i>Ball</span>
-        <span><i class="bead"></i>All 20 hypotheses</span>
-        <label class="toggle"><input type="checkbox" id="gt"> True future</label>
-      </div>
-      <p class="caption">All 20 hypotheses start from one noise sample and reach their forecasts after 10 Euler steps. Hulls: the most-supported 2–4 s group of each size of the selected hypothesis.</p>
     </div>
   </div>
 </section>
 
-<section id="motion" aria-labelledby="motion-title">
+<section class="sec theater" id="videos" aria-labelledby="videos-title">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Videos</div>
-      <h2 id="motion-title">Forecasts in Motion</h2>
-      <p class="lede">Select a clip to enlarge it.</p>
-    </div>
+    <div class="sh rv"><h2 id="videos-title">Videos</h2></div>
     <div class="gallery" id="gallery"></div>
   </div>
 </section>
 
-<section id="idea" aria-labelledby="idea-title">
-  <div class="wrap thesis">
-    <div style="display:grid;gap:1.4rem">
-      <div class="eyebrow" id="idea-title">Key idea</div>
-      <p class="quote">Hypothesis-conditioned groups: <em>every hypothesis forms the groups of the future it predicts.</em></p>
-      <figure>
-        <div class="print"><img src="static/media/fig_teaser.webp" alt="Per-agent, group-aware and H2Flow forecasters: H2Flow forms groups of its future for every hypothesis" width="1320" height="956" loading="lazy"></div>
-        <figcaption><b>Figure 1.</b> Group-aware forecasters fix groups from the past for all futures; each hypothesis of H<sup class="two">2</sup>Flow forms the groups of its own future.</figcaption>
-      </figure>
-    </div>
-    <div class="abstract">
-      <div class="eyebrow">Abstract</div>
-      <p class="first">Predicting collective motion requires anticipating both where agents will move and which agents will move together. Existing group-aware forecasters infer their interaction structure from the observed motion before generating future hypotheses, even though different futures may involve different groups.</p>
-      <p>We introduce hypothesis-conditioned groups, in which each predicted future forms its own groups as it is generated. Our framework, H<sup class="two">2</sup>Flow, integrates this principle into multi-hypothesis flow matching. A scene hypergraph encoder captures higher-order interactions in observed motion, while each hypothesis constructs its own multi-scale hypergraphs from its evolving estimate of the future. These groups guide trajectory generation through group tokens and a group-factorized prediction head, coupling the evolution of motion and interaction structure. To promote collective consistency, a hyperedge-level winner-take-all objective selects a shared winning hypothesis for interacting agents without group annotations.</p>
-      <p>Experiments on basketball, American football, and soccer datasets demonstrate improved trajectory accuracy and collective forecasting performance. Analyses confirm that each hypothesis forms the groups of its own predicted future and that the gains come from groups formed from the predicted futures and from scoring the hypotheses on them.</p>
-    </div>
-  </div>
-</section>
-
-<section id="method" aria-labelledby="method-title">
+<section class="sec band" id="results" aria-labelledby="results-title">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Method</div>
-      <h2 id="method-title">Hypothesis-Conditioned Hypergraph Flow Matching</h2>
+    <div class="sh rv">
+      <h2 id="results-title">Results</h2>
+      <p class="lede">4.0 s horizon, 20 hypotheses. G3, Team, and Scene score each group with its best hypothesis: an agent and its two nearest neighbors, a team, or all agents.</p>
     </div>
-    <figure>
-      <div class="print"><img src="static/media/fig_overview.webp" alt="Overview of H2Flow: scene hypergraph encoder and hypothesis-conditioned decoder inside the flow matching loop" width="2400" height="1343" loading="lazy"></div>
-      <figcaption><b>Figure 2.</b> Overview of H<sup class="two">2</sup>Flow. The encoder runs once per scene; in every decoder block, each hypothesis forms the groups of its estimated future, and these groups shape its prediction.</figcaption>
-    </figure>
-    <div class="ideas">
-      <article class="idea" style="--c:var(--h1)">
-        <span class="tag">DECODER · EVERY BLOCK, EVERY FLOW STEP</span>
-        <h3>Futures define groups</h3>
-        <p>Each hypothesis groups agents by token similarity and by their distance in its own estimated future, passed on by self-conditioning.</p>
-        <div class="eq" aria-label="affinity equals token similarity minus t times w times the estimated distance">α<sub>k,ij</sub> <span class="up">=</span> ḡ<sub>k,i</sub><sup>⊤</sup>ḡ<sub>k,j</sub> <span class="up">−</span> t · w · δ<sub>k,ij</sub></div>
-      </article>
-      <article class="idea" style="--c:var(--h2)">
-        <span class="tag">DECODER · AGENT ATTENTION AND HEAD</span>
-        <h3>Groups shape futures</h3>
-        <p>Agents attend to the group tokens of their hypothesis, and a group-factorized endpoint adds a correction shared by the members of each group.</p>
-        <div class="eq" aria-label="endpoint equals per-agent term plus mean group correction">S<sub>k,i</sub> <span class="up">=</span> MLP<sub>reg</sub>(G<sub>k,i</sub>) <span class="up">+</span> mean<sub>e ∋ i</sub> MLP<sub>grp</sub>(γ<sub>k,e</sub>)</div>
-      </article>
-      <article class="idea" style="--c:var(--h3)">
-        <span class="tag">TRAINING · NO GROUP LABELS</span>
-        <h3>Hyperedge-level winner-take-all</h3>
-        <p>Each hyperedge selects the hypothesis with the lowest error over its members, without group labels.</p>
-        <div class="eq" aria-label="group loss equals mean over hyperedges of the minimum over hypotheses of the group error">ℒ<sub>grp</sub> <span class="up">=</span> mean<sub>e</sub> min<sub>k</sub> ε<sub>k,e</sub></div>
-      </article>
+    <div class="stats rv">
+      <div class="stat"><span class="v">−6.2%</span><span class="l">Scene-min<sub>20</sub>ADE, NBA</span><span class="d">1.372 vs 1.463 m (MoFlow)</span></div>
+      <div class="stat"><span class="v">−3.7%</span><span class="l">Per-agent min<sub>20</sub>ADE, NBA</span><span class="d">0.673 vs 0.699 m (MoFlow)</span></div>
+      <div class="stat"><span class="v">−3.8%</span><span class="l">Scene-min<sub>20</sub>ADE, NFL</span><span class="d">2.405 vs 2.499 m (MoFlow)</span></div>
+      <div class="stat"><span class="v">−11.3%</span><span class="l">Scene-min<sub>20</sub>ADE, soccer</span><span class="d">1.799 vs 2.028 m (MoFlow)</span></div>
     </div>
-  </div>
-</section>
-
-<section id="results" aria-labelledby="results-title">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Results</div>
-      <h2 id="results-title">Trajectory and Joint Accuracy</h2>
-      <p class="lede">4.0 s horizon, K = 20. G3, Team, and Scene match each group (an agent with its two nearest neighbors, a team, or all agents) to its best hypothesis.</p>
-    </div>
-    <div class="stats">
-      <div class="stat" style="--c:var(--h1)"><span class="v" data-count="6.2">−6.2%</span><span class="l">Scene-min<sub>20</sub>ADE on NBA</span><span class="d">1.372 m vs 1.463 m (MoFlow)</span></div>
-      <div class="stat" style="--c:var(--h2)"><span class="v" data-count="3.7">−3.7%</span><span class="l">Per-agent min<sub>20</sub>ADE on NBA</span><span class="d">0.673 m vs 0.699 m (MoFlow)</span></div>
-      <div class="stat" style="--c:var(--h3)"><span class="v" data-count="3.8">−3.8%</span><span class="l">Scene-min<sub>20</sub>ADE on NFL</span><span class="d">2.405 m vs 2.499 m (MoFlow)</span></div>
-      <div class="stat" style="--c:var(--h1)"><span class="v" data-count="11.3">−11.3%</span><span class="l">Scene-min<sub>20</sub>ADE on soccer</span><span class="d">1.799 m vs 2.028 m (MoFlow)</span></div>
-    </div>
-    <div class="chart-bar">
+    <div class="ctrls rv">
       <div class="seg" role="group" aria-label="Dataset" id="dsets"></div>
       <div class="seg" role="group" aria-label="Metric" id="mets"></div>
     </div>
-    <div class="panels" id="panels"></div>
+    <figure class="chartcard rv">
+      <div id="charts"></div>
+      <figcaption>Lower is better; the dashed line marks H<sup class="two">2</sup>Flow. Hover a dot for ADE and FDE.</figcaption>
+    </figure>
     <details>
-      <summary>Full table <span>· min<sub>20</sub>ADE/FDE (m) at 4.0 s, Table 1 of the paper</span></summary>
-      <div class="tablebox" id="fulltable"></div>
+      <summary>Table 1 · <span id="t1name">NBA</span><span class="s">min<sub>20</sub>ADE / FDE (m) at 4.0 s</span></summary>
+      <div class="tablebox" id="t1"></div>
+      <p class="tnote">Bold: lowest in the column; underlined: second lowest.</p>
     </details>
     <details>
-      <summary>NBA over the horizon <span>· per-agent min<sub>20</sub>ADE/FDE (m), Table 2</span></summary>
-      <div class="tablebox"><table>
-        <thead><tr><th>Method</th><th>Venue</th><th>1.0 s</th><th>2.0 s</th><th>3.0 s</th><th>4.0 s</th></tr></thead>
+      <summary>Table 2 · NBA over the horizon<span class="s">per-agent min<sub>20</sub>ADE / FDE (m)</span></summary>
+      <div class="tablebox"><table class="mark-best" data-first="2">
+        <thead><tr><th>Method</th><th class="venue">Venue</th><th>1.0 s</th><th>2.0 s</th><th>3.0 s</th><th>4.0 s</th></tr></thead>
         <tbody>
-          <tr><td>MemoNet</td><td>CVPR'22</td><td>0.38/0.56</td><td>0.71/1.14</td><td>1.00/1.57</td><td>1.25/1.47</td></tr>
-          <tr><td>NPSN</td><td>CVPR'22</td><td>0.35/0.58</td><td>0.68/1.23</td><td>1.01/1.76</td><td>1.31/1.79</td></tr>
-          <tr><td>GroupNet</td><td>CVPR'22</td><td>0.21/0.32</td><td>0.42/0.67</td><td>0.66/0.98</td><td>0.89/1.22</td></tr>
-          <tr><td>MID</td><td>CVPR'22</td><td>0.28/0.37</td><td>0.51/0.72</td><td>0.71/0.98</td><td>0.96/1.27</td></tr>
-          <tr><td>LED-D</td><td>CVPR'23</td><td>0.21/0.28</td><td>0.44/0.64</td><td>0.69/0.95</td><td>0.94/1.21</td></tr>
-          <tr><td>LED-I</td><td>CVPR'23</td><td>0.18/0.27</td><td>0.37/0.56</td><td>0.58/0.83</td><td>0.81/1.15</td></tr>
-          <tr><td>DynGroupNet</td><td>NN'24</td><td>0.19/0.28</td><td>0.40/0.61</td><td>0.65/0.90</td><td>0.89/1.13</td></tr>
-          <tr><td>MART</td><td>ECCV'24</td><td>0.18/0.26</td><td>0.36/0.51</td><td>0.54/0.72</td><td>0.74/0.92</td></tr>
-          <tr><td>MoFlow</td><td>CVPR'25</td><td>0.18/0.25</td><td>0.33/0.46</td><td>0.51/0.67</td><td>0.70/0.88</td></tr>
-          <tr><td>Social-Mamba</td><td>ECCV'26</td><td>0.17/0.25</td><td>0.34/0.50</td><td>0.53/0.72</td><td>0.73/0.92</td></tr>
-          <tr class="ours"><td>H²Flow</td><td>Ours</td><td>0.17/0.25</td><td>0.33/0.45</td><td>0.49/0.64</td><td>0.67/0.84</td></tr>
+          <tr><td>MemoNet</td><td class="venue">CVPR'22</td><td>0.38/0.56</td><td>0.71/1.14</td><td>1.00/1.57</td><td>1.25/1.47</td></tr>
+          <tr><td>NPSN</td><td class="venue">CVPR'22</td><td>0.35/0.58</td><td>0.68/1.23</td><td>1.01/1.76</td><td>1.31/1.79</td></tr>
+          <tr><td>GroupNet</td><td class="venue">CVPR'22</td><td>0.21/0.32</td><td>0.42/0.67</td><td>0.66/0.98</td><td>0.89/1.22</td></tr>
+          <tr><td>MID</td><td class="venue">CVPR'22</td><td>0.28/0.37</td><td>0.51/0.72</td><td>0.71/0.98</td><td>0.96/1.27</td></tr>
+          <tr><td>LED-D</td><td class="venue">CVPR'23</td><td>0.21/0.28</td><td>0.44/0.64</td><td>0.69/0.95</td><td>0.94/1.21</td></tr>
+          <tr><td>LED-I</td><td class="venue">CVPR'23</td><td>0.18/0.27</td><td>0.37/0.56</td><td>0.58/0.83</td><td>0.81/1.15</td></tr>
+          <tr><td>DynGroupNet</td><td class="venue">NN'24</td><td>0.19/0.28</td><td>0.40/0.61</td><td>0.65/0.90</td><td>0.89/1.13</td></tr>
+          <tr><td>MART</td><td class="venue">ECCV'24</td><td>0.18/0.26</td><td>0.36/0.51</td><td>0.54/0.72</td><td>0.74/0.92</td></tr>
+          <tr><td>MoFlow</td><td class="venue">CVPR'25</td><td>0.18/0.25</td><td>0.33/0.46</td><td>0.51/0.67</td><td>0.70/0.88</td></tr>
+          <tr><td>Social-Mamba</td><td class="venue">ECCV'26</td><td>0.17/0.25</td><td>0.34/0.50</td><td>0.53/0.72</td><td>0.73/0.92</td></tr>
+          <tr class="ours"><td>H²Flow</td><td class="venue">Ours</td><td>0.17/0.25</td><td>0.33/0.45</td><td>0.49/0.64</td><td>0.67/0.84</td></tr>
         </tbody>
       </table></div>
     </details>
     <details>
-      <summary>Pedestrians <span>· min<sub>20</sub>ADE/FDE at 4.8 s on ETH-UCY (m) and SDD (pixels), Table 3</span></summary>
-      <div class="tablebox"><table>
+      <summary>Table 3 · Pedestrians<span class="s">min<sub>20</sub>ADE / FDE at 4.8 s, ETH-UCY (m) and SDD (pixels)</span></summary>
+      <div class="tablebox"><table class="mark-best" data-first="1">
         <thead><tr><th>Method</th><th>ETH</th><th>Hotel</th><th>Univ</th><th>Zara1</th><th>Zara2</th><th>AVG</th><th>SDD</th></tr></thead>
         <tbody>
           <tr><td>MID</td><td>.39/.66</td><td>.13/.22</td><td>.22/.45</td><td>.17/.30</td><td>.13/.27</td><td>.21/.38</td><td>9.73/15.32</td></tr>
@@ -459,57 +457,114 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
           <tr class="ours"><td>H²Flow</td><td>.44/.64</td><td>.12/.16</td><td>.23/.41</td><td>.16/.29</td><td>.13/.22</td><td>.22/.34</td><td>7.44/11.92</td></tr>
         </tbody>
       </table></div>
-      <p class="note">Its best configurations on ETH, Univ, Zara2, and SDD forecast each pedestrian alone, so these benchmarks mainly test the decoder.</p>
+      <p class="tnote">Its best configurations on ETH, Univ, Zara2, and SDD forecast each pedestrian alone, so these benchmarks mainly test the decoder.</p>
     </details>
-  </div>
-</section>
-
-<section id="analysis" aria-labelledby="analysis-title">
-  <div class="wrap analysis">
-    <div style="display:grid;gap:1rem">
-      <div class="eyebrow">Analysis</div>
-      <h2 id="analysis-title">Groups Follow Each Hypothesis's Future</h2>
-      <p>On NBA, the 2–4 s groups of a hypothesis overlap most with the groups of its own predicted future, the closest of the 20 at 2.6× chance.</p>
-      <p>Without the hyperedge-level loss, Scene-min<sub>20</sub>ADE rises from 1.373 to 1.464 m.</p>
-    </div>
-    <div class="hbars" role="img" aria-label="Jaccard overlap of a hypothesis's groups with the groups of its own future 0.687, another hypothesis's future 0.654, the true future 0.581, random groups 0.21">
-      <div style="font-family:var(--f-display);font-weight:600;font-size:.88rem;color:var(--ink);margin-bottom:.2rem">Overlap of a hypothesis's groups with the groups of… <span style="color:var(--muted);font-weight:500">(Jaccard)</span></div>
-      <div class="hb own"><span>its own future</span><div class="track"><div class="fill" style="width:68.7%"></div></div><span class="val">0.687</span></div>
-      <div class="hb"><span>another hypothesis's future</span><div class="track"><div class="fill" style="width:65.4%"></div></div><span class="val">0.654</span></div>
-      <div class="hb"><span>the true future</span><div class="track"><div class="fill" style="width:58.1%"></div></div><span class="val">0.581</span></div>
-      <div class="hb"><span>random groups</span><div class="track"><div class="fill" style="width:21%"></div></div><span class="val">0.21</span></div>
-      <div class="axis01" aria-hidden="true"><span></span><div><span>0</span><span>0.5</span><span>1</span></div><span></span></div>
+    <div class="an">
+      <div class="an-t rv">
+        <h3>Groups Follow Each Hypothesis's Future</h3>
+        <p>On NBA, the 2–4 s groups of a hypothesis overlap most with the groups of its own predicted future. Without the hyperedge-level loss, Scene-min<sub>20</sub>ADE rises from 1.373 to 1.464 m.</p>
+      </div>
+      <div class="hbars rv" role="img" aria-label="Jaccard overlap of a hypothesis's groups with the groups of its own future 0.687, another hypothesis's future 0.654, the true future 0.581, random groups 0.21">
+        <div class="cap">Overlap of a hypothesis's groups with the groups of… <span>(Jaccard)</span></div>
+        <div class="hb own"><span>its own future</span><div class="track"><div class="fill" style="width:68.7%"></div></div><span class="val">0.687</span></div>
+        <div class="hb"><span>another hypothesis's future</span><div class="track"><div class="fill" style="width:65.4%"></div></div><span class="val">0.654</span></div>
+        <div class="hb"><span>the true future</span><div class="track"><div class="fill" style="width:58.1%"></div></div><span class="val">0.581</span></div>
+        <div class="hb"><span>random groups</span><div class="track"><div class="fill" style="width:21%"></div></div><span class="val">0.21</span></div>
+        <div class="axis" aria-hidden="true"><span></span><div><span>0</span><span>0.5</span><span>1</span></div><span></span></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="qualitative" aria-labelledby="qual-title">
+<section class="sec" id="method" aria-labelledby="method-title">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Qualitative results</div>
-      <h2 id="qual-title">Joint Forecasts and Hypothesis Groups</h2>
+    <div class="sh rv"><h2 id="method-title">Method</h2></div>
+    <figure class="fig rv">
+      <div class="pic"><img src="static/media/fig_overview.webp" alt="Overview of H2Flow: scene hypergraph encoder and hypothesis-conditioned decoder inside the flow matching loop" width="2400" height="1343" loading="lazy"></div>
+      <figcaption><b>Figure 2.</b> Overview of H<sup class="two">2</sup>Flow. In every decoder block, each hypothesis forms the groups of its estimated future, and these groups shape its prediction.</figcaption>
+    </figure>
+    <div class="eqs">
+      <div class="eqc rv">
+        <h3>Hypothesis-conditioned groups</h3>
+        <p>In every decoder block and flow step, each hypothesis groups agents by token similarity and by their distance in its own estimated future.</p>
+      </div>
+      <div class="eqc rv">
+        <h3>Group-factorized endpoint</h3>
+        <p>Agents attend to the group tokens of their hypothesis, and each group adds a correction shared by its members.</p>
+      </div>
+      <div class="eqc rv">
+        <h3>Hyperedge-level winner-take-all</h3>
+        <p>Each hyperedge keeps the hypothesis with the lowest error over its members, so interacting agents share a winner without group labels.</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="sec band" id="demo" aria-labelledby="demo-title">
+  <div class="wrap">
+    <div class="sh rv">
+      <h2 id="demo-title">Interactive Demo</h2>
+      <p class="lede">Run the flow from noise to forecast, or pick a hypothesis to see the groups of its own future.</p>
+    </div>
+    <div class="demo rv">
+      <div>
+        <div class="court">
+          <canvas id="court" aria-label="NBA court with the flow states, the selected hypothesis and its groups"></canvas>
+          <div class="loading" id="loading">Loading…</div>
+        </div>
+        <div class="court-foot">
+          <span><i class="k-a"></i>Team A</span><span><i class="k-b"></i>Team B</span><span><i class="k-ball"></i>Ball</span><span><i class="k-bead"></i>Flow states of all 20 hypotheses</span>
+        </div>
+      </div>
+      <aside class="panel" aria-label="Demo controls">
+        <div class="ctl">
+          <div class="label">NBA test play</div>
+          <div class="seg" role="group" aria-label="NBA play" id="plays"></div>
+        </div>
+        <div class="ctl">
+          <div class="label">Flow time <span id="tval">t = 0.00</span></div>
+          <div class="flow">
+            <button class="playbtn" id="play" type="button" aria-label="Pause"><svg viewBox="0 0 16 16" fill="currentColor" id="playicon"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg></button>
+            <input type="range" id="t" min="0" max="1000" value="0" aria-label="Flow time t">
+          </div>
+          <div class="ticks" aria-hidden="true"><span>noise</span><span>forecast</span></div>
+        </div>
+        <div class="ctl">
+          <div class="label">Hypotheses <span>by score · joint ADE (m)</span></div>
+          <div class="hyps" id="hyps" role="group" aria-label="Hypothesis"></div>
+          <div class="now" id="now">&nbsp;</div>
+        </div>
+        <div class="ctl">
+          <div class="label">2–4 s groups</div>
+          <div class="groups" id="groups" aria-live="polite"></div>
+          <label class="toggle"><input type="checkbox" id="gt"> Show the true future</label>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="qualitative" aria-labelledby="qual-title">
+  <div class="wrap">
+    <div class="sh rv"><h2 id="qual-title">Qualitative Results</h2></div>
     <div class="figs">
-      <figure>
-        <div class="print"><img src="static/media/fig_qual_pred_gt.webp" alt="Best joint hypothesis of each model on an NBA, an NFL and a soccer play" width="2400" height="1146" loading="lazy"></div>
+      <figure class="fig rv">
+        <div class="pic"><img src="static/media/fig_qual_pred_gt.webp" alt="Best joint hypothesis of each model on an NBA, an NFL and a soccer play" width="2400" height="1146" loading="lazy"></div>
         <figcaption><b>Figure 3.</b> Best joint hypothesis of each model on an NBA, an NFL, and a soccer play (ADE/FDE in m).</figcaption>
       </figure>
-      <figure>
-        <div class="print"><img src="static/media/fig_qual_hyp_groups.webp" alt="Hypotheses of H2Flow on one NBA play with their groups" width="2400" height="691" loading="lazy"></div>
+      <figure class="fig rv">
+        <div class="pic"><img src="static/media/fig_qual_hyp_groups.webp" alt="Hypotheses of H2Flow on one NBA play with their groups" width="2400" height="691" loading="lazy"></div>
         <figcaption><b>Figure 4.</b> Hypotheses of H<sup class="two">2</sup>Flow on one NBA play: the most-supported group of each size (top) and the best-supported 2–4 s hyperedges (bottom).</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section id="cite" aria-labelledby="bib-title">
+<section class="sec" id="cite" aria-labelledby="bib-title">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Citation</div>
-      <h2 id="bib-title">BibTeX</h2>
-    </div>
-    <div class="bib">
-      <button class="copy" id="copybib">Copy</button>
+    <div class="sh rv"><h2 id="bib-title">BibTeX</h2></div>
+    <div class="bib rv">
+      <button class="copy" id="copybib" type="button">Copy</button>
 <pre id="bibtext">@article{gan2026groups,
   title   = {Groups Shape Futures, Futures Define Groups: Hypothesis-Conditioned
              Hypergraph Flow Matching for Collective Motion Forecasting},
@@ -521,21 +576,44 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
   </div>
 </section>
+</main>
 
 <footer>
-  <div class="wrap"><span style="font-family:var(--f-serif);font-weight:600;color:#EAF1FF;font-size:1.15rem">H<sup style="color:#F5BE45;font-size:.55em">2</sup>Flow</span><span>University of Wisconsin-Madison · Marquette University · Texas A&amp;M University</span></div>
+  <div class="wrap"><a class="brand" href="#top">H<sup>2</sup>Flow</a><span>University of Wisconsin-Madison · Marquette University · Texas A&amp;M University</span></div>
 </footer>
 
+<div class="tip" id="tip" hidden></div>
+
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Video player">
-  <button class="lb-close" id="lbclose" aria-label="Close">✕</button>
+  <button class="lb-close" id="lbclose" type="button" aria-label="Close">✕</button>
   <div class="lb-in"><video id="lbv" controls playsinline></video><p id="lbcap"></p></div>
 </div>
-<div class="tip" id="tip" hidden></div>
 
 <script>
 (function () {
   'use strict';
-  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+  function isDark() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+
+  /* ---------------------------------------------------------------- nav over the cover, reveal on scroll */
+  var nav = document.getElementById('nav');
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (es) { nav.classList.toggle('over', es[0].isIntersecting); }, { rootMargin: '-60px 0px 0px 0px', threshold: 0 }).observe(document.getElementById('top'));
+    if (!REDUCED) {
+      var rio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -6% 0px', threshold: 0.01 });
+      each(document.querySelectorAll('.rv'), function (n) { rio.observe(n); });
+    }
+  } else {
+    nav.classList.remove('over');
+  }
+  if (REDUCED || !window.IntersectionObserver) each(document.querySelectorAll('.rv'), function (n) { n.classList.add('in'); });
 
   /* ---------------------------------------------------------------- lightbox */
   var lb = document.getElementById('lb'), lbv = document.getElementById('lbv'), lbcap = document.getElementById('lbcap'), lastFocus = null;
@@ -549,11 +627,8 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   document.getElementById('lbclose').addEventListener('click', closeLB);
   lb.addEventListener('click', function (e) { if (e.target === lb) closeLB(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) closeLB(); });
-  Array.prototype.forEach.call(document.querySelectorAll('[data-overview]'), function (n) {
-    n.addEventListener('click', function (e) { e.preventDefault(); openLB('static/media/overview.mp4', 'static/media/overview.jpg', 'H²Flow overview (2.5 min).', false); });
-  });
 
-  /* ---------------------------------------------------------------- gallery of loops */
+  /* ---------------------------------------------------------------- video clips */
   var CLIPS = [
     { id: 'flow_steps', wide: true, tag: 'NBA', title: 'Flow Matching, Step by Step', text: 'Play 101: flow states (top), estimates and 2–4 s groups (bottom) of two hypotheses at each Euler step.' },
     { id: 'hyp_groups', tag: 'NBA', title: 'Groups of Every Hypothesis', text: 'Play 382: the most-supported group of each size for all 20 hypotheses, ranked by score.' },
@@ -562,129 +637,144 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   ];
   var gal = document.getElementById('gallery'), vids = [];
   CLIPS.forEach(function (c) {
-    var f = document.createElement('figure'); f.className = 'tile' + (c.wide ? ' wide' : '');
-    f.innerHTML = '<button class="screen" type="button" aria-label="Watch large: ' + c.title + '"><video muted loop playsinline preload="metadata" poster="static/media/' + c.id + '.jpg"' + (REDUCED ? '' : ' autoplay') + ' src="static/media/' + c.id + '.mp4"></video>' +
+    var f = document.createElement('figure'); f.className = 'tile rv' + (c.wide ? ' wide' : '');
+    f.innerHTML = '<button class="screen" type="button" aria-label="Watch large: ' + c.title + '"><video muted loop playsinline preload="metadata" poster="static/media/' + c.id + '.jpg" src="static/media/' + c.id + '.mp4"></video>' +
       '<span class="zoom" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9.5 2.5h4v4M13.5 2.5 9 7M6.5 13.5h-4v-4M2.5 13.5 7 9"/></svg></span></button>' +
       '<figcaption><span class="tag">' + c.tag + '</span><b>' + c.title + '</b><span>' + c.text + '</span></figcaption>';
     var v = f.querySelector('video'); v.muted = true; vids.push(v);
     f.querySelector('.screen').addEventListener('click', function () { openLB('static/media/' + c.id + '.mp4', 'static/media/' + c.id + '.jpg', c.title + '. ' + c.text, true); });
     gal.appendChild(f);
+    if (rio && !REDUCED) rio.observe(f); else f.classList.add('in');
   });
   if (!REDUCED && window.IntersectionObserver) {
     var vio = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.2 });
     vids.forEach(function (v) { vio.observe(v); });
   }
 
-  /* ---------------------------------------------------------------- results */
+  /* ---------------------------------------------------------------- results tables */
   var METHODS = ['GroupNet', 'LED', 'MART', 'Social-Mamba', 'MoFlow', 'H²Flow'];
   var VENUES = ["CVPR'22", "CVPR'23", "ECCV'24", "ECCV'26", "CVPR'25", 'Ours'];
-  var LEVELS = ['Agent', 'G3', 'Team', 'Scene'];
-  var LEVEL_NAME = { Agent: 'Per agent', G3: 'G3 groups', Team: 'Team', Scene: 'Scene' };
+  var LEVELS = ['Per agent', 'G3', 'Team', 'Scene'];
+  // per method: Agent ADE, FDE, G3 ADE, FDE, Team ADE, FDE, Scene ADE, FDE (Table 1 of the paper)
   var R = {
     NBA: [[0.891,1.224,1.512,2.610,1.632,3.071,2.043,3.798],[0.808,1.152,1.346,2.267,1.404,2.579,1.593,2.854],[0.736,0.924,1.281,2.150,1.367,2.546,1.540,2.792],[0.729,0.925,1.284,2.175,1.368,2.585,1.534,2.814],[0.699,0.878,1.219,2.067,1.310,2.485,1.463,2.695],[0.673,0.842,1.143,1.959,1.227,2.346,1.372,2.554]],
     NFL: [[1.918,3.301,3.390,6.610,4.586,9.299,5.174,10.508],[1.470,2.649,2.399,4.615,2.916,5.849,3.159,6.315],[1.209,1.943,2.074,3.940,2.570,5.164,2.773,5.556],[1.168,1.922,2.020,3.909,2.533,5.193,2.704,5.499],[1.104,1.794,1.887,3.649,2.358,4.816,2.499,5.086],[1.081,1.743,1.811,3.511,2.274,4.669,2.405,4.922]],
     Soccer: [[1.104,2.016,1.945,4.045,2.354,5.160,2.821,6.079],[1.061,1.890,1.675,3.233,1.676,3.390,1.921,3.834],[1.003,1.757,1.584,3.037,1.584,3.199,1.824,3.618],[0.938,1.637,1.556,3.017,1.590,3.254,1.797,3.615],[1.091,1.766,1.727,3.077,1.798,3.359,2.028,3.730],[0.964,1.611,1.534,2.864,1.588,3.132,1.799,3.487]]
   };
-  var state = { ds: 'NBA', met: 0 };
-  var tip = document.getElementById('tip');
-  function showTip(e, html) { tip.innerHTML = html; tip.hidden = false; moveTip(e); }
+  function rankOf(vals, v) {                            // 0 = lowest, 1 = second lowest (ties share a rank), -1 otherwise
+    var u = vals.slice().sort(function (a, b) { return a - b; }).filter(function (x, i, a) { return i === 0 || x !== a[i - 1]; });
+    return v === u[0] ? 0 : (v === u[1] ? 1 : -1);
+  }
+  function mark(s, r) { return r === 0 ? '<b>' + s + '</b>' : (r === 1 ? '<u>' + s + '</u>' : s); }
+  function drawT1(ds) {
+    var rows = R[ds];
+    var head = '<tr><th>Method</th><th class="venue">Venue</th>' + LEVELS.map(function (l) { return '<th>' + l + '</th>'; }).join('') + '</tr>';
+    var body = rows.map(function (r, i) {
+      var cells = LEVELS.map(function (l, li) {
+        var a = r[li * 2], f = r[li * 2 + 1];
+        var ra = rankOf(rows.map(function (q) { return q[li * 2]; }), a), rf = rankOf(rows.map(function (q) { return q[li * 2 + 1]; }), f);
+        return '<td>' + mark(a.toFixed(3), ra) + ' / ' + mark(f.toFixed(3), rf) + '</td>';
+      }).join('');
+      return '<tr' + (i === 5 ? ' class="ours"' : '') + '><td>' + METHODS[i] + '</td><td class="venue">' + VENUES[i] + '</td>' + cells + '</tr>';
+    }).join('');
+    document.getElementById('t1').innerHTML = '<table><thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
+    document.getElementById('t1name').textContent = ds;
+  }
+
+  // one dot plot per level (Per agent, G3, Team, Scene), drawn at the card's pixel width
+  var OURS = 5, rs = { ds: 'NBA', met: 0 }, chartsEl = document.getElementById('charts'), chartsW = 0, tip = document.getElementById('tip');
+  var NS = 'http://www.w3.org/2000/svg';
+  function sv(tag, attrs, txt) { var n = document.createElementNS(NS, tag); for (var k in attrs) n.setAttribute(k, attrs[k]); if (txt != null) n.textContent = txt; return n; }
   function moveTip(e) {
     var x = e.clientX + 14, y = e.clientY + 14, w = tip.offsetWidth, h = tip.offsetHeight;
     if (x + w > window.innerWidth - 8) x = e.clientX - w - 14;
     if (y + h > window.innerHeight - 8) y = e.clientY - h - 14;
     tip.style.left = x + 'px'; tip.style.top = y + 'px';
   }
-  function hideTip() { tip.hidden = true; }
+  function drawCharts() {                              // small multiples: method names once, one dot strip per level
+    var rows = R[rs.ds], mName = rs.met ? 'FDE' : 'ADE', nR = rows.length;
+    var Wt = Math.max(260, Math.floor(chartsEl.clientWidth)), cols = Wt >= 860 ? 4 : (Wt >= 540 ? 2 : 1);
+    var labW = Wt >= 540 ? 108 : 94, gap = cols > 1 ? 32 : 0, pW = (Wt - labW - gap * (cols - 1)) / cols;
+    var rowH = 28, headH = 54, axisH = 26, gainH = 26, blockH = headH + rowH * nR + axisH + gainH, blockGap = 30;
+    var nb = Math.ceil(LEVELS.length / cols), H = nb * blockH + (nb - 1) * blockGap;
+    var svg = sv('svg', { width: Wt, height: H, viewBox: '0 0 ' + Wt + ' ' + H, role: 'img',
+      'aria-label': rs.ds + ', ' + mName + ' (m) per level: ' + LEVELS.map(function (l, li) { return l + ' ' + METHODS.map(function (m, i) { return m + ' ' + rows[i][li * 2 + rs.met].toFixed(3); }).join(', '); }).join('; ') });
+    chartsEl.innerHTML = '';
+    for (var b = 0; b < nb; b++) {
+      var y0 = b * (blockH + blockGap), py0 = y0 + headH;
+      svg.appendChild(sv('rect', { 'class': 'c-band', x: 0, y: py0 + rowH * OURS + 2, width: Wt, height: rowH - 4, rx: 7 }));
+      rows.forEach(function (r, i) { svg.appendChild(sv('text', { 'class': 'c-lab' + (i === OURS ? ' o' : ''), x: 10, y: py0 + rowH * i + rowH / 2 + 4 }, METHODS[i])); });
+      for (var c = 0; c < cols && b * cols + c < LEVELS.length; c++) panel(svg, b * cols + c, labW + c * (pW + gap), y0, py0, pW, rowH, rows, mName);
+    }
+    chartsEl.appendChild(svg);
+  }
+  function panel(svg, li, x0, y0, py0, pW, rowH, rows, mName) {
+    var lev = LEVELS[li], col = li * 2 + rs.met, vals = rows.map(function (r) { return r[col]; }), nR = rows.length;
+    var a = x0 + 6, z = x0 + pW - 42, yb = py0 + rowH * nR;
+    svg.appendChild(sv('text', { 'class': 'c-title', x: x0, y: y0 + 19 }, lev));
+    var u = sv('text', { 'class': 'c-unit', x: x0, y: y0 + 38 }, (li ? lev + '-' : '') + 'min');
+    u.appendChild(sv('tspan', { dy: 3, 'font-size': '8px' }, '20')); u.appendChild(sv('tspan', { dy: -3 }, mName + ' (m)'));
+    svg.appendChild(u);
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals), maxT = Math.max(2, Math.floor((z - a) / 46)), steps = [0.02, 0.05, 0.1, 0.2, 0.25, 0.5, 1, 2, 2.5, 5, 10], st = 10;
+    for (var q = 0; q < steps.length; q++) if ((Math.ceil(hi / steps[q]) - Math.floor(lo / steps[q])) <= maxT) { st = steps[q]; break; }
+    var v0 = Math.floor(lo / st) * st, v1 = Math.ceil(hi / st) * st;
+    function sx(v) { return a + (v - v0) / (v1 - v0) * (z - a); }
+    for (var g = v0; g <= v1 + 1e-9; g += st) {
+      svg.appendChild(sv('line', { 'class': 'c-grid', x1: sx(g), x2: sx(g), y1: py0, y2: yb }));
+      svg.appendChild(sv('text', { 'class': 'c-tick', x: sx(g), y: yb + 16, 'text-anchor': 'middle' }, String(+g.toFixed(2))));
+    }
+    svg.appendChild(sv('line', { 'class': 'c-ref', x1: sx(vals[OURS]), x2: sx(vals[OURS]), y1: py0, y2: yb }));
+    vals.forEach(function (v, i) {
+      var y = py0 + rowH * i + rowH / 2, o = i === OURS ? ' o' : '';
+      svg.appendChild(sv('line', { 'class': 'c-row', x1: a, x2: z, y1: y, y2: y }));
+      var dot = sv('circle', { 'class': 'c-dot' + o, cx: sx(v), cy: y, r: o ? 6 : 4.5 });
+      svg.appendChild(dot);
+      svg.appendChild(sv('text', { 'class': 'c-val' + o, x: sx(v) + 10, y: y + 4 }, v.toFixed(3)));
+      var hit = sv('rect', { x: x0, y: y - rowH / 2, width: pW, height: rowH, fill: 'transparent' }), r = rows[i];
+      var html = '<b>' + METHODS[i] + '</b> · ' + VENUES[i] + '<br>' + lev + ' ADE / FDE: ' + r[li * 2].toFixed(3) + ' / ' + r[li * 2 + 1].toFixed(3) + ' m';
+      hit.addEventListener('pointerenter', function (e) { tip.innerHTML = html; tip.hidden = false; moveTip(e); dot.setAttribute('r', o ? 7 : 6); });
+      hit.addEventListener('pointermove', moveTip);
+      hit.addEventListener('pointerleave', function () { tip.hidden = true; dot.setAttribute('r', o ? 6 : 4.5); });
+      svg.appendChild(hit);
+    });
+    var best = Infinity, bi = 0;
+    vals.forEach(function (v, i) { if (i !== OURS && v < best) { best = v; bi = i; } });
+    var d = (vals[OURS] - best) / best * 100, gt = sv('text', { 'class': 'c-gain', x: x0, y: yb + 48 });
+    gt.appendChild(sv('tspan', { 'class': 'c-gain-v' }, (d <= 0 ? '−' : '+') + Math.abs(d).toFixed(1) + '%'));
+    gt.appendChild(sv('tspan', {}, ' vs ' + METHODS[bi] + (d <= 0 ? ', the next best' : ', the best')));
+    svg.appendChild(gt);
+  }
   function segButtons(host, items, current, onPick) {
     host.innerHTML = '';
     items.forEach(function (it) {
       var b = document.createElement('button'); b.type = 'button'; b.textContent = it.label;
       b.setAttribute('aria-pressed', it.value === current ? 'true' : 'false');
       b.addEventListener('click', function () {
-        Array.prototype.forEach.call(host.children, function (c) { c.setAttribute('aria-pressed', 'false'); });
+        each(host.children, function (c) { c.setAttribute('aria-pressed', 'false'); });
         b.setAttribute('aria-pressed', 'true'); onPick(it.value);
       });
       host.appendChild(b);
     });
   }
-  function niceStep(span) { var s = [0.1, 0.2, 0.25, 0.5, 1, 2]; for (var i = 0; i < s.length; i++) if (span / s[i] <= 5) return s[i]; return 5; }
-  var NS = 'http://www.w3.org/2000/svg';
-  function sv(tag, attrs, txt) { var n = document.createElementNS(NS, tag); for (var k in attrs) n.setAttribute(k, attrs[k]); if (txt != null) n.textContent = txt; return n; }
-  function drawPanels() {
-    var host = document.getElementById('panels'); host.innerHTML = '';
-    var rows = R[state.ds];
-    LEVELS.forEach(function (lev, li) {
-      var col = li * 2 + state.met;
-      var vals = rows.map(function (r) { return r[col]; });
-      var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
-      var step = niceStep(hi - lo), x0 = Math.floor(lo / step) * step, x1 = Math.ceil(hi / step) * step;
-      if (x1 - hi < step * 0.12) x1 += step;
-      var W = 300, padL = 92, padR = 46, rowH = 26, top = 6, H = top + rowH * vals.length + 24;
-      var sx = function (v) { return padL + (v - x0) / (x1 - x0) * (W - padL - padR); };
-      var bestOther = Math.min.apply(null, vals.slice(0, 5)), ours = vals[5];
-      var p = document.createElement('div'); p.className = 'panel';
-      p.innerHTML = '<h3>' + LEVEL_NAME[lev] + '</h3><div class="unit">' + (lev === 'Agent' ? '' : lev + '-') + 'min₂₀' + (state.met ? 'FDE' : 'ADE') + ' (m), lower is better</div>';
-      var svg = sv('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': LEVEL_NAME[lev] + ': ' + METHODS.map(function (m, i) { return m + ' ' + vals[i].toFixed(3); }).join(', ') });
-      for (var g = x0; g <= x1 + 1e-9; g += step) {
-        var gx = sx(g);
-        svg.appendChild(sv('line', { x1: gx, x2: gx, y1: top, y2: H - 20, stroke: 'var(--rule)', 'stroke-width': 1 }));
-        svg.appendChild(sv('text', { x: gx, y: H - 6, 'text-anchor': 'middle', fill: 'var(--muted)', 'font-size': 10, 'font-family': 'Inter, sans-serif', style: 'font-variant-numeric: tabular-nums' }, (+g.toFixed(2)).toString()));
+  segButtons(document.getElementById('dsets'), [{ label: 'NBA', value: 'NBA' }, { label: 'NFL', value: 'NFL' }, { label: 'Soccer', value: 'Soccer' }], 'NBA', function (v) { rs.ds = v; drawCharts(); drawT1(v); });
+  segButtons(document.getElementById('mets'), [{ label: 'ADE', value: 0 }, { label: 'FDE', value: 1 }], 0, function (v) { rs.met = v; drawCharts(); });
+  drawT1('NBA'); drawCharts(); chartsW = chartsEl.clientWidth;
+  if (window.ResizeObserver) new ResizeObserver(function () { var w = chartsEl.clientWidth; if (w !== chartsW) { chartsW = w; drawCharts(); } }).observe(chartsEl);
+  else window.addEventListener('resize', drawCharts);
+  each(document.querySelectorAll('table.mark-best'), function (t) {   // bold / underline the lowest two ADE and FDE of each column
+    var first = +t.getAttribute('data-first'), rows = t.tBodies[0].rows, nc = rows[0].cells.length;
+    for (var c = first; c < nc; c++) {
+      var parts = [], j;
+      for (j = 0; j < rows.length; j++) parts.push(rows[j].cells[c].textContent.split('/'));
+      for (var m = 0; m < 2; m++) {
+        var vals = parts.map(function (p) { return parseFloat(p[m]); });
+        for (j = 0; j < rows.length; j++) parts[j][m] = mark(parts[j][m], rankOf(vals, vals[j]));
       }
-      vals.forEach(function (v, i) {
-        var y = top + rowH * i + rowH / 2, isOurs = i === 5;
-        svg.appendChild(sv('text', { x: 0, y: y + 4, fill: isOurs ? 'var(--ink)' : 'var(--ink-2)', 'font-size': 11.5, 'font-weight': isOurs ? 700 : 500, 'font-family': 'Inter, sans-serif' }, METHODS[i]));
-        svg.appendChild(sv('line', { x1: padL, x2: sx(v), y1: y, y2: y, stroke: isOurs ? 'var(--ours)' : 'var(--other)', 'stroke-width': 2, 'stroke-linecap': 'round', opacity: isOurs ? .55 : .45 }));
-        var c = sv('circle', { cx: sx(v), cy: y, r: isOurs ? 6 : 4.5, fill: isOurs ? 'var(--ours)' : 'var(--other)', stroke: 'var(--surface)', 'stroke-width': 2 });
-        svg.appendChild(c);
-        svg.appendChild(sv('text', { x: sx(v) + 10, y: y + 4, fill: isOurs ? 'var(--ink)' : 'var(--muted)', 'font-size': 10.5, 'font-weight': isOurs ? 700 : 400, 'font-family': 'Inter, sans-serif', style: 'font-variant-numeric: tabular-nums' }, v.toFixed(3)));
-        var hit = sv('rect', { x: 0, y: y - rowH / 2, width: W, height: rowH, fill: 'transparent' });
-        var r = rows[i], html = '<b>' + METHODS[i] + '</b> · ' + VENUES[i] + '<br>' + LEVEL_NAME[lev] + ' ADE/FDE ' + r[li * 2].toFixed(3) + ' / ' + r[li * 2 + 1].toFixed(3) + ' m';
-        hit.addEventListener('pointerenter', function (e) { showTip(e, html); c.setAttribute('r', isOurs ? 7 : 6); });
-        hit.addEventListener('pointermove', moveTip);
-        hit.addEventListener('pointerleave', function () { hideTip(); c.setAttribute('r', isOurs ? 6 : 4.5); });
-        svg.appendChild(hit);
-      });
-      p.appendChild(svg);
-      var gain = (bestOther - ours) / bestOther * 100, gd = document.createElement('div'); gd.className = 'gain';
-      gd.textContent = gain >= 0 ? '−' + gain.toFixed(1) + '% vs the best other' : '+' + (-gain).toFixed(1) + '% vs the best other';
-      p.appendChild(gd); host.appendChild(p);
-    });
-  }
-  function drawTable() {
-    var ds = ['NBA', 'NFL', 'Soccer'];
-    var head = '<tr><th rowspan="2">Method</th><th rowspan="2">Venue</th>' + ds.map(function (d) { return '<th colspan="4" style="text-align:center">' + d + '</th>'; }).join('') +
-      '</tr><tr>' + ds.map(function () { return LEVELS.map(function (l) { return '<th>' + l + '</th>'; }).join(''); }).join('') + '</tr>';
-    var body = METHODS.map(function (m, i) {
-      var tds = ds.map(function (d) {
-        return LEVELS.map(function (l, li) {
-          var sorted = R[d].map(function (r) { return r[li * 2]; }).sort(function (a, b) { return a - b; });
-          var v = R[d][i][li * 2], cls = v === sorted[0] ? 'best' : (v === sorted[1] ? 'second' : '');
-          return '<td class="' + cls + '">' + v.toFixed(3) + '/' + R[d][i][li * 2 + 1].toFixed(3) + '</td>';
-        }).join('');
-      }).join('');
-      return '<tr' + (i === 5 ? ' class="ours"' : '') + '><td>' + m + '</td><td>' + VENUES[i] + '</td>' + tds + '</tr>';
-    }).join('');
-    document.getElementById('fulltable').innerHTML = '<table><thead>' + head + '</thead><tbody>' + body + '</tbody></table><p class="note" style="padding:0 .8rem .8rem">Bold: lowest ADE in the column; underlined: second lowest.</p>';
-  }
-  segButtons(document.getElementById('dsets'), [{ label: 'NBA', value: 'NBA' }, { label: 'NFL', value: 'NFL' }, { label: 'Soccer', value: 'Soccer' }], 'NBA', function (v) { state.ds = v; drawPanels(); });
-  segButtons(document.getElementById('mets'), [{ label: 'ADE', value: 0 }, { label: 'FDE', value: 1 }], 0, function (v) { state.met = v; drawPanels(); });
-  drawPanels(); drawTable();
-
-  // count-up of the headline numbers (they show their final values until it runs)
-  if (!REDUCED && window.IntersectionObserver) {
-    var cio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        cio.unobserve(e.target);
-        var nv = e.target, target = parseFloat(nv.dataset.count), t0 = null;
-        function f(ts) { if (t0 === null) t0 = ts; var u = Math.min(1, (ts - t0) / 1100), k = 1 - Math.pow(1 - u, 3); nv.textContent = '−' + (target * k).toFixed(1) + '%'; if (u < 1) requestAnimationFrame(f); }
-        requestAnimationFrame(f);
-      });
-    }, { threshold: 0.6 });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function (n) { cio.observe(n); });
-  }
+      for (j = 0; j < rows.length; j++) rows[j].cells[c].innerHTML = parts[j][0] + ' / ' + parts[j][1];
+    }
+  });
 
   /* ---------------------------------------------------------------- BibTeX */
   var copyBtn = document.getElementById('copybib');
@@ -695,7 +785,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   });
 
   /* ---------------------------------------------------------------- shared court data */
-  var A = 11, K = 20, F = 20, NT = 5, BALL = 10, SIZES = [2, 3, 5];
+  var A = 11, K = 20, F = 20, NT = 5, BALL = 10, SIZES = [2, 3, 5], HULL_R = { 5: 1.32, 3: 1.06, 2: 0.82 };
   function dec(b64) { var s = atob(b64), n = s.length, u = new Uint8Array(n); for (var i = 0; i < n; i++) u[i] = s.charCodeAt(i); var a = new Int16Array(u.buffer), f = new Float32Array(a.length); for (var j = 0; j < a.length; j++) f[j] = a[j] / 100; return f; }
   function unpack(raw) {
     var past = dec(raw.past), fut = dec(raw.fut);
@@ -711,6 +801,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     return Q;
   }
   function sIdx(ti, k, a, f) { return (((ti * K + k) * A + a) * F + f) * 2; }
+  function statePos(Q, tau, k, a, f) {                 // position of agent a, frame f, hypothesis k on the flow path at time tau
+    var ti = Math.min(Math.floor(tau * 10), 9), fr = tau * 10 - ti, ti1 = Math.min(ti + 1, 10), st = Q.state;
+    var i0 = sIdx(ti, k, a, f), i1 = sIdx(ti1, k, a, f);
+    return [Q.pos0[a][0] + st[i0] + (st[i1] - st[i0]) * fr, Q.pos0[a][1] + st[i0 + 1] + (st[i1 + 1] - st[i0 + 1]) * fr];
+  }
   function hullPts(pts, r) {
     var cand = [];
     pts.forEach(function (p) { for (var i = 0; i < 28; i++) { var a = i / 28 * 2 * Math.PI; cand.push([p[0] + r * Math.cos(a), p[1] + r * Math.sin(a)]); } });
@@ -738,66 +833,79 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       c.beginPath(); c.arc(px(bx), py(0), 1.22 * sc, s > 0 ? Math.PI / 2 : -Math.PI / 2, s > 0 ? 3 * Math.PI / 2 : Math.PI / 2, false); c.stroke();
     });
   }
+  function hexRGB(h) { var n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; }
+  function mix(hex, bg, s) { var a = hexRGB(hex), b = hexRGB(bg); return 'rgb(' + Math.round(b[0] + (a[0] - b[0]) * s) + ',' + Math.round(b[1] + (a[1] - b[1]) * s) + ',' + Math.round(b[2] + (a[2] - b[2]) * s) + ')'; }
 
-  /* ---------------------------------------------------------------- hero floor (always dark) */
+  /* ---------------------------------------------------------------- cover: the court as a tilted stage (always dark) */
+  // timeline (s): 0-1 noise, 1-6.5 flow from t = 0 to 1 (one glowing dot per agent and hypothesis at 4 s, with short motion
+  // streaks), 6.5-12.5 up to three top-scored hypotheses in turn (HP.heroKs: distinct groups of three), each with its
+  // trajectories and its most-supported group of three, 12.5-14 back to noise
   var fcv = document.getElementById('floor'), fctx = fcv.getContext('2d'), FW = 0, FH = 0, fsc = 1, fdpr = 1, HP = null, heroOn = true, heroLoop = false, heroT0 = null;
   var GLOW = { a: '111,168,255', b: '255,111,145', ball: '255,193,77' }, SPR = {};
-  var HULL_GLOW = { 2: '#55B8FF', 3: '#FF8D52', 5: '#3FD6A6' }, HULL_R = { 5: 1.32, 3: 1.06, 2: 0.82 };
   function sprite(rgb) { var s = document.createElement('canvas'), n = 32; s.width = s.height = n; var g = s.getContext('2d'), gr = g.createRadialGradient(n / 2, n / 2, 0, n / 2, n / 2, n / 2); gr.addColorStop(0, 'rgba(' + rgb + ',1)'); gr.addColorStop(.22, 'rgba(' + rgb + ',.6)'); gr.addColorStop(1, 'rgba(' + rgb + ',0)'); g.fillStyle = gr; g.fillRect(0, 0, n, n); return s; }
   SPR.a = sprite(GLOW.a); SPR.b = sprite(GLOW.b); SPR.ball = sprite(GLOW.ball);
   function teamRGB(a) { return a === BALL ? GLOW.ball : (a < NT ? GLOW.a : GLOW.b); }
-  function fpx(x) { return FW / 2 + x * fsc; }
-  function fpy(y) { return FH / 2 - y * fsc; }
+  var fz = 1;                                                        // camera zoom: out at the noise, in at the forecast
+  function fpx(x) { return FW / 2 + x * fsc * fz; }
+  function fpy(y) { return FH / 2 - y * fsc * fz; }
+  function heroZoom(tau) { if (!HP || !HP.zoom) return 1; var u = tau * 10, i = Math.min(Math.floor(u), 9), f = u - i; return HP.zoom[i] + (HP.zoom[i + 1] - HP.zoom[i]) * f; }
   function ease(u) { return u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; }
-  // timeline (s): 0-1 noise, 1-6.5 flow 0->1, 6.5-12.5 hold: up to three top-scored hypotheses in turn, each with its trajectories
-  // and its most-supported group of three (HP.heroKs: distinct groups), 12.5-14 back to noise
-  var PERIOD = 14;
+  var PERIOD = 14, phaseEls = document.querySelectorAll('.phase span'), curPhase = 0;
   function heroClock() { if (REDUCED || heroT0 === null) return 7; return ((performance.now() - heroT0) / 1000) % PERIOD; }
   function heroState(c) {
-    var t = 0, show = 0, cyc = 0;
+    var t = 0, show = 0, cyc = 0, ph = 0;
     if (c < 1) t = 0;
-    else if (c < 6.5) t = ease((c - 1) / 5.5);
-    else if (c < 12.5) { t = 1; var n = HP ? HP.heroKs.length : 1, seg = 6 / n; cyc = Math.min(n - 1, Math.floor((c - 6.5) / seg)); var u = (c - 6.5) - cyc * seg; show = Math.min(1, u / .45, (seg - u) / .35); if (REDUCED) show = 1; }
+    else if (c < 6.5) { t = ease((c - 1) / 5.5); ph = 1; }
+    else if (c < 12.5) { t = 1; ph = 2; var n = HP ? HP.heroKs.length : 1, seg = 6 / n; cyc = Math.min(n - 1, Math.floor((c - 6.5) / seg)); var u = (c - 6.5) - cyc * seg; show = Math.min(1, u / .45, (seg - u) / .35); if (REDUCED) show = 1; }
     else t = 1 - ease((c - 12.5) / 1.5);
-    return { t: t, show: Math.max(0, show), k: HP ? HP.heroKs[cyc] : 0 };
+    return { t: t, show: Math.max(0, show), k: HP ? HP.heroKs[cyc] : 0, ph: ph };
   }
-  function fresize() { var r = fcv.getBoundingClientRect(); fdpr = Math.min(window.devicePixelRatio || 1, 2); FW = r.width; FH = r.height; fcv.width = Math.round(FW * fdpr); fcv.height = Math.round(FH * fdpr); fsc = Math.min(FW / 33, FH / 18); drawFloor(heroClock()); }
+  function setPhase(p) { if (p === curPhase) return; curPhase = p; each(phaseEls, function (el, i) { el.classList.toggle('on', i === p); }); }
+  function fresize() { var r = fcv.getBoundingClientRect(); fdpr = Math.min(window.devicePixelRatio || 1, 2); FW = fcv.offsetWidth || r.width; FH = fcv.offsetHeight || r.height; fcv.width = Math.round(FW * fdpr); fcv.height = Math.round(FH * fdpr); fsc = Math.min(FW / 32, FH / 17.4); drawFloor(heroClock()); }
   function drawFloor(c) {
     if (!FW) return;
     var x = fctx; x.setTransform(fdpr, 0, 0, fdpr, 0, 0); x.clearRect(0, 0, FW, FH);
-    x.strokeStyle = 'rgba(150,185,240,.3)'; x.lineWidth = 1.3; courtPath(x, fpx, fpy, fsc);
+    var s = heroState(c), tau = s.t, a, f, k;
+    fz = heroZoom(tau);
+    x.strokeStyle = 'rgba(150,185,240,.42)'; x.lineWidth = 1.5; courtPath(x, fpx, fpy, fsc * fz);
     if (!HP) return;
-    var s = heroState(c), tau = s.t, ti = Math.min(Math.floor(tau * 10), 9), fr = tau * 10 - ti, ti1 = Math.min(ti + 1, 10), st = HP.state, a, f, k;
+    setPhase(s.ph);
     x.globalCompositeOperation = 'lighter';
-    var sz = Math.max(8, fsc * .8);
-    x.globalAlpha = 0.28 + 0.5 * tau;
+    var sz = Math.max(9, fsc * .85), dim = 1 - .5 * s.show;
+    if (tau > 0.02 && tau < 0.98) {                                   // short motion streaks while the flow runs
+      var t0 = Math.max(0, tau - 0.06);
+      x.lineWidth = 1.6; x.lineCap = 'round';
+      for (a = 0; a < A; a++) {
+        x.strokeStyle = 'rgba(' + teamRGB(a) + ',.30)'; x.beginPath();
+        for (k = 0; k < K; k++) { var p0 = statePos(HP, t0, k, a, F - 1), p1 = statePos(HP, tau, k, a, F - 1); x.moveTo(fpx(p0[0]), fpy(p0[1])); x.lineTo(fpx(p1[0]), fpy(p1[1])); }
+        x.stroke();
+      }
+    }
+    x.globalAlpha = (0.3 + 0.5 * tau) * dim;
     for (k = 0; k < K; k++) for (a = 0; a < A; a++) {                 // the 4 s state of every hypothesis: 20 dots per agent
-      var spr = a === BALL ? SPR.ball : (a < NT ? SPR.a : SPR.b), ox = HP.pos0[a][0], oy = HP.pos0[a][1];
-      var i0 = sIdx(ti, k, a, F - 1), i1 = sIdx(ti1, k, a, F - 1);
-      var X = fpx(ox + st[i0] + (st[i1] - st[i0]) * fr), Y = fpy(oy + st[i0 + 1] + (st[i1 + 1] - st[i0 + 1]) * fr);
+      var spr = a === BALL ? SPR.ball : (a < NT ? SPR.a : SPR.b), q = statePos(HP, tau, k, a, F - 1), X = fpx(q[0]), Y = fpy(q[1]);
       if (X < -10 || Y < -10 || X > FW + 10 || Y > FH + 10) continue;
       x.drawImage(spr, X - sz / 2, Y - sz / 2, sz, sz);
     }
-    x.globalAlpha = 1;
-    x.lineCap = 'round'; x.lineJoin = 'round';
+    x.globalAlpha = 1; x.lineCap = 'round'; x.lineJoin = 'round';
     for (a = 0; a < A; a++) {
-      x.strokeStyle = 'rgba(' + teamRGB(a) + ',.45)'; x.lineWidth = 1.4; x.beginPath();
-      for (f = 0; f < 10; f++) { var q = HP.past[a][f]; if (f) x.lineTo(fpx(q[0]), fpy(q[1])); else x.moveTo(fpx(q[0]), fpy(q[1])); }
+      x.strokeStyle = 'rgba(' + teamRGB(a) + ',.5)'; x.lineWidth = 1.5; x.beginPath();
+      for (f = 0; f < 10; f++) { var pp = HP.past[a][f]; if (f) x.lineTo(fpx(pp[0]), fpy(pp[1])); else x.moveTo(fpx(pp[0]), fpy(pp[1])); }
       x.stroke();
     }
     if (s.show > 0) {
       var E = HP.endpt, kk = s.k, gr = HP.groups[9][kk], ends = [];
       for (a = 0; a < A; a++) {
         var col = 'rgba(' + teamRGB(a) + ',' + (.95 * s.show) + ')';
-        x.strokeStyle = col; x.lineWidth = 1.6; x.shadowColor = col; x.shadowBlur = 8; x.beginPath(); x.moveTo(fpx(HP.pos0[a][0]), fpy(HP.pos0[a][1]));
+        x.strokeStyle = col; x.lineWidth = 1.8; x.shadowColor = col; x.shadowBlur = 8; x.beginPath(); x.moveTo(fpx(HP.pos0[a][0]), fpy(HP.pos0[a][1]));
         for (f = 0; f < F; f++) { var j = sIdx(9, kk, a, f); x.lineTo(fpx(HP.pos0[a][0] + E[j]), fpy(HP.pos0[a][1] + E[j + 1])); }
         x.stroke(); var je = sIdx(9, kk, a, F - 1); ends.push([HP.pos0[a][0] + E[je], HP.pos0[a][1] + E[je + 1]]);
       }
-      x.globalCompositeOperation = 'source-over';
-      var poly = hullPts(gr[SIZES.indexOf(3)].map(function (m) { return ends[m]; }), HULL_R[3]);      // one group: its most-supported group of three
+      x.globalCompositeOperation = 'source-over'; x.shadowBlur = 0;
+      var poly = hullPts(gr[SIZES.indexOf(3)].map(function (m) { return ends[m]; }), HULL_R[3]);
       x.beginPath(); poly.forEach(function (p, i) { if (i) x.lineTo(fpx(p[0]), fpy(p[1])); else x.moveTo(fpx(p[0]), fpy(p[1])); }); x.closePath();
-      x.globalAlpha = .14 * s.show; x.fillStyle = '#F5BE45'; x.shadowBlur = 0; x.fill();
-      x.globalAlpha = s.show; x.strokeStyle = '#F5BE45'; x.lineWidth = 2.2; x.shadowColor = '#F5BE45'; x.shadowBlur = 18; x.stroke();
+      x.globalAlpha = .15 * s.show; x.fillStyle = '#F2B84B'; x.fill();
+      x.globalAlpha = s.show; x.strokeStyle = '#F2B84B'; x.lineWidth = 2.4; x.shadowColor = '#F2B84B'; x.shadowBlur = 18; x.stroke();
       x.shadowBlur = 0; x.globalAlpha = 1;
     }
     x.globalCompositeOperation = 'source-over';
@@ -806,58 +914,56 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     if (!heroOn || REDUCED) { heroLoop = false; return; }
     drawFloor(heroClock()); requestAnimationFrame(heroTick);
   }
-  function startHero() { if (!heroLoop && !REDUCED && HP && heroOn) { heroLoop = true; if (heroT0 === null) heroT0 = performance.now(); requestAnimationFrame(heroTick); } }
+  function startHero() { if (!heroLoop && !REDUCED && HP && heroOn) { heroLoop = true; if (heroT0 === null) heroT0 = performance.now() - 6500; requestAnimationFrame(heroTick); } }   // opens on the forecast
   if (window.IntersectionObserver) new IntersectionObserver(function (es) { heroOn = es[0].isIntersecting; if (heroOn) startHero(); }, { threshold: 0.02 }).observe(document.getElementById('top'));
   if (window.ResizeObserver) new ResizeObserver(fresize).observe(fcv); else window.addEventListener('resize', fresize);
   fresize();
 
-  /* ---------------------------------------------------------------- court demo */
+  /* ---------------------------------------------------------------- interactive demo */
   var cv = document.getElementById('court'), ctx = cv.getContext('2d');
-  var hud = document.getElementById('hud'), slider = document.getElementById('t'), playBtn = document.getElementById('play'), playIcon = document.getElementById('playicon');
+  var slider = document.getElementById('t'), playBtn = document.getElementById('play'), playIcon = document.getElementById('playicon'), tval = document.getElementById('tval');
   var hypsEl = document.getElementById('hyps'), nowEl = document.getElementById('now'), groupsEl = document.getElementById('groups'), gtBox = document.getElementById('gt');
   var VX = 15.3, VY = 8.3;
-  var TEAM_A = '#1F3B63', TEAM_B = '#B0244A', BALLC = '#E3A51C', LINE = '#D3D8DF';
-  var SIZE_COL = { 2: '#0072B2', 3: '#D55E00', 5: '#009E73' };
+  var PAL_L = { bg: '#F7F8FA', line: '#D5DAE1', A: '#1F3B63', B: '#B0244A', ball: '#E3A51C', ballEdge: '#7A5608', txtA: '#FFFFFF', fillB: '#FFFFFF', bead: .32, g: { 2: '#0072B2', 3: '#D55E00', 5: '#009E73' }, hullA: .11 };
+  var PAL_D = { bg: '#0F1521', line: '#27324A', A: '#86AEE8', B: '#F07D9B', ball: '#F2B84B', ballEdge: '#0F1521', txtA: '#0F1521', fillB: '#0F1521', bead: .36, g: { 2: '#56B4E9', 3: '#F0904F', 5: '#3DCB9C' }, hullA: .14 };
+  var PAL = isDark() ? PAL_D : PAL_L;
   var PLAYS = [], P = null, sel = 0, tau = 0, playing = !REDUCED, phase = 'flow', phaseT = 0, cycle = [], cycleI = 0;
   var lastStep = -1, pulse = {}, W = 0, H = 0, sc = 1, dpr = 1, lastTs = 0, looping = false, roKey = '', demoOn = true;
   function startLoop() { if (!looping && demoOn) { looping = true; lastTs = 0; requestAnimationFrame(tick); } }
   function px(x) { return (x + VX) * sc; }
   function py(y) { return (VY - y) * sc; }
-  function agentCol(a) { return a === BALL ? BALLC : (a < NT ? TEAM_A : TEAM_B); }
-  function tint(hex, s) { var n = parseInt(hex.slice(1), 16), r = n >> 16, g = (n >> 8) & 255, b = n & 255; return 'rgb(' + Math.round(255 - (255 - r) * s) + ',' + Math.round(255 - (255 - g) * s) + ',' + Math.round(255 - (255 - b) * s) + ')'; }
+  function agentCol(a) { return a === BALL ? PAL.ball : (a < NT ? PAL.A : PAL.B); }
   function agentName(a) { return a === BALL ? 'ball' : (a < NT ? 'A' + (a + 1) : 'B' + (a - NT + 1)); }
   function resize() { var r = cv.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); sc = W / (2 * VX); draw(); }
   function curStep() { return tau >= 1 ? 9 : Math.min(Math.floor(tau * 10), 9); }
-
   function draw() {
     if (!W) return;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.fillStyle = '#F7F8FA'; ctx.fillRect(0, 0, W, H);
-    ctx.strokeStyle = LINE; ctx.lineWidth = 1.2; courtPath(ctx, px, py, sc);
+    ctx.fillStyle = PAL.bg; ctx.fillRect(0, 0, W, H);
+    ctx.strokeStyle = PAL.line; ctx.lineWidth = 1.2; courtPath(ctx, px, py, sc);
     if (!P) return;
-    var ti = Math.min(Math.floor(tau * 10), 9), fr = tau * 10 - ti, ti1 = Math.min(ti + 1, 10), step = curStep();
+    var step = curStep(), k, a, f, X, Y;
     if (step !== lastStep) {
       var now = performance.now();
       if (lastStep >= 0) SIZES.forEach(function (z, zi) { if (P.groups[step][sel][zi].join() !== P.groups[lastStep][sel][zi].join()) pulse[z] = now; });
       lastStep = step;
     }
-    var st = P.state, rB = Math.max(1, sc * 0.075), k, a, f, X, Y;
-    ctx.fillStyle = 'rgba(126,137,154,0.42)';
-    for (k = 0; k < K; k++) for (a = 0; a < A; a++) {
-      var ox = P.pos0[a][0], oy = P.pos0[a][1];
-      for (f = 0; f < F; f++) {
-        var i0 = sIdx(ti, k, a, f), i1 = sIdx(ti1, k, a, f);
-        X = px(ox + st[i0] + (st[i1] - st[i0]) * fr); Y = py(oy + st[i0 + 1] + (st[i1 + 1] - st[i0 + 1]) * fr);
+    var rB = Math.max(.9, sc * 0.07);
+    for (a = 0; a < A; a++) {                                          // flow states of all 20 hypotheses, as beads in the agent's colour
+      ctx.fillStyle = mix(agentCol(a), PAL.bg, PAL.bead);
+      for (k = 0; k < K; k++) for (f = 0; f < F; f++) {
+        var q = statePos(P, tau, k, a, f); X = px(q[0]); Y = py(q[1]);
         if (X < -4 || Y < -4 || X > W + 4 || Y > H + 4) continue;
         ctx.fillRect(X - rB, Y - rB, 2 * rB, 2 * rB);
       }
     }
     ctx.lineCap = 'round'; ctx.lineJoin = 'round';
     for (a = 0; a < A; a++) {
-      ctx.strokeStyle = tint(agentCol(a), 0.45); ctx.lineWidth = 1.6; ctx.beginPath();
-      for (f = 0; f < 10; f++) { var q = P.past[a][f]; if (f) ctx.lineTo(px(q[0]), py(q[1])); else ctx.moveTo(px(q[0]), py(q[1])); }
+      ctx.strokeStyle = mix(agentCol(a), PAL.bg, .45); ctx.lineWidth = 1.6; ctx.beginPath();
+      for (f = 0; f < 10; f++) { var pp = P.past[a][f]; if (f) ctx.lineTo(px(pp[0]), py(pp[1])); else ctx.moveTo(px(pp[0]), py(pp[1])); }
       ctx.stroke();
     }
+    var fr = tau * 10 - Math.min(Math.floor(tau * 10), 9);
     var est = [], E = P.endpt, w = step === 0 || tau >= 1 ? 1 : Math.min(1, fr * 2.5), sm = w * w * (3 - 2 * w), prev = Math.max(step - 1, 0);
     for (a = 0; a < A; a++) {
       var path = [P.pos0[a]];
@@ -870,7 +976,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     if (gtBox.checked) {
       ctx.setLineDash([4, 4]);
       for (a = 0; a < A; a++) {
-        ctx.strokeStyle = tint(agentCol(a), 0.5); ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(px(P.pos0[a][0]), py(P.pos0[a][1]));
+        ctx.strokeStyle = mix(agentCol(a), PAL.bg, .55); ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(px(P.pos0[a][0]), py(P.pos0[a][1]));
         for (f = 0; f < F; f++) { var g = P.fut[a][f]; ctx.lineTo(px(P.pos0[a][0] + g[0]), py(P.pos0[a][1] + g[1])); }
         ctx.stroke();
       }
@@ -878,40 +984,39 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     }
     var gr = P.groups[step][sel], tnow = performance.now();
     [5, 3, 2].forEach(function (z) {
-      var poly = hullPts(gr[SIZES.indexOf(z)].map(function (m) { return est[m][F]; }), HULL_R[z]), col = SIZE_COL[z];
+      var poly = hullPts(gr[SIZES.indexOf(z)].map(function (m) { return est[m][F]; }), HULL_R[z]), col = PAL.g[z];
       var pu = pulse[z] ? Math.max(0, 1 - (tnow - pulse[z]) / 700) : 0;
       ctx.beginPath(); poly.forEach(function (p, i) { if (i) ctx.lineTo(px(p[0]), py(p[1])); else ctx.moveTo(px(p[0]), py(p[1])); }); ctx.closePath();
-      ctx.globalAlpha = 0.11 + 0.12 * pu; ctx.fillStyle = col; ctx.fill(); ctx.globalAlpha = 1;
+      ctx.globalAlpha = PAL.hullA + 0.12 * pu; ctx.fillStyle = col; ctx.fill(); ctx.globalAlpha = 1;
       if (pu > 0) { ctx.save(); ctx.shadowColor = col; ctx.shadowBlur = 14 * pu; ctx.lineWidth = 1.6 + 3 * pu; ctx.strokeStyle = col; ctx.stroke(); ctx.restore(); }
-      ctx.lineWidth = 1.6; ctx.strokeStyle = col; ctx.stroke();
+      ctx.lineWidth = 1.7; ctx.strokeStyle = col; ctx.stroke();
     });
     for (a = 0; a < A; a++) {
-      ctx.strokeStyle = agentCol(a); ctx.globalAlpha = 0.9; ctx.lineWidth = 2; ctx.beginPath();
+      ctx.strokeStyle = agentCol(a); ctx.globalAlpha = 0.92; ctx.lineWidth = 2; ctx.beginPath();
       est[a].forEach(function (p, i) { if (i) ctx.lineTo(px(p[0]), py(p[1])); else ctx.moveTo(px(p[0]), py(p[1])); });
       ctx.stroke(); ctx.globalAlpha = 1;
     }
     for (a = 0; a < A; a++) {
-      var c0 = P.pos0[a]; ctx.beginPath(); ctx.arc(px(c0[0]), py(c0[1]), 3, 0, 2 * Math.PI); ctx.fillStyle = '#F7F8FA'; ctx.fill(); ctx.lineWidth = 1.4; ctx.strokeStyle = agentCol(a); ctx.stroke();
+      var c0 = P.pos0[a]; ctx.beginPath(); ctx.arc(px(c0[0]), py(c0[1]), 3, 0, 2 * Math.PI); ctx.fillStyle = PAL.bg; ctx.fill(); ctx.lineWidth = 1.4; ctx.strokeStyle = agentCol(a); ctx.stroke();
     }
-    var rN = Math.max(6, Math.min(9, sc * 0.34));
+    var rN = Math.max(6, Math.min(9.5, sc * 0.34));
     for (a = 0; a < A; a++) {
       var e = est[a][F]; X = px(e[0]); Y = py(e[1]);
-      if (a === BALL) { ctx.save(); ctx.translate(X, Y); ctx.rotate(Math.PI / 4); ctx.fillStyle = BALLC; ctx.strokeStyle = '#7A5608'; ctx.lineWidth = 1; ctx.fillRect(-rN * .6, -rN * .6, rN * 1.2, rN * 1.2); ctx.strokeRect(-rN * .6, -rN * .6, rN * 1.2, rN * 1.2); ctx.restore(); continue; }
+      if (a === BALL) { ctx.save(); ctx.translate(X, Y); ctx.rotate(Math.PI / 4); ctx.fillStyle = PAL.ball; ctx.strokeStyle = PAL.ballEdge; ctx.lineWidth = 1; ctx.fillRect(-rN * .6, -rN * .6, rN * 1.2, rN * 1.2); ctx.strokeRect(-rN * .6, -rN * .6, rN * 1.2, rN * 1.2); ctx.restore(); continue; }
       ctx.beginPath(); ctx.arc(X, Y, rN, 0, 2 * Math.PI);
-      ctx.fillStyle = a < NT ? TEAM_A : '#FFFFFF'; ctx.fill(); ctx.lineWidth = a < NT ? 1.2 : 1.8; ctx.strokeStyle = a < NT ? '#FFFFFF' : TEAM_B; ctx.stroke();
-      ctx.fillStyle = a < NT ? '#FFFFFF' : TEAM_B; ctx.font = '600 ' + Math.round(rN * 1.15) + 'px Inter, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = a < NT ? PAL.A : PAL.fillB; ctx.fill(); ctx.lineWidth = a < NT ? 1.2 : 1.8; ctx.strokeStyle = a < NT ? PAL.bg : PAL.B; ctx.stroke();
+      ctx.fillStyle = a < NT ? PAL.txtA : PAL.B; ctx.font = '600 ' + Math.round(rN * 1.15) + 'px Inter, system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(String(a < NT ? a + 1 : a - NT + 1), X, Y + .5);
     }
-    hud.hidden = false; hud.textContent = 't = ' + tau.toFixed(2) + ' · Euler step ' + (step + 1) + ' of 10';
+    tval.textContent = 't = ' + tau.toFixed(2) + ' · step ' + (step + 1) + '/10';
     if (!playing && Object.keys(pulse).some(function (z) { return tnow - pulse[z] < 700; })) requestAnimationFrame(draw);
   }
   function readout() {
     if (!P) return;
     var step = curStep(), gr = P.groups[step][sel], key = P.id + '|' + sel + '|' + step;
     if (key === roKey) return; roKey = key;
-    nowEl.innerHTML = 'Play <b>' + P.id + '</b> · score rank <b>' + P.rank[sel] + '</b> · joint ADE <b>' + P.ade[sel].toFixed(2) + ' m</b>' + (sel === P.best ? ' · <b>best of 20</b>' : '') +
-      '<br><span style="color:var(--muted);font-size:.85rem">Two hypotheses differ in ' + Math.round(P.differ * 100) + '% of their 2–4 s hyperedges.</span>';
-    groupsEl.innerHTML = SIZES.map(function (z, zi) { return '<div class="grp"><span class="sw" style="border-color:' + SIZE_COL[z] + ';background:' + SIZE_COL[z] + '22"></span>Group of ' + z + ': ' + gr[zi].map(agentName).join(' · ') + '</div>'; }).join('');
+    nowEl.innerHTML = 'Score rank <b>' + P.rank[sel] + '</b> · joint ADE <b>' + P.ade[sel].toFixed(2) + ' m</b>' + (sel === P.best ? ' · <b>lowest of 20</b>' : '');
+    groupsEl.innerHTML = SIZES.map(function (z, zi) { return '<div class="grp"><span class="sw" style="border-color:' + PAL.g[z] + ';background:' + PAL.g[z] + '26"></span><em>Size ' + z + '</em><span>' + gr[zi].map(agentName).join(' · ') + '</span></div>'; }).join('');
   }
   function buildHyps() {
     hypsEl.innerHTML = '';
@@ -928,7 +1033,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   function select(k) {
     if (k !== sel) { pulse = {}; var now = performance.now(); SIZES.forEach(function (z) { pulse[z] = now; }); }
     sel = k; lastStep = curStep();
-    Array.prototype.forEach.call(hypsEl.children, function (c) { c.setAttribute('aria-pressed', +c.dataset.k === k ? 'true' : 'false'); });
+    each(hypsEl.children, function (c) { c.setAttribute('aria-pressed', +c.dataset.k === k ? 'true' : 'false'); });
     readout(); draw();
   }
   function loadPlay(i) {
@@ -961,19 +1066,32 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   gtBox.addEventListener('change', draw);
   if (window.ResizeObserver) new ResizeObserver(resize).observe(cv); else window.addEventListener('resize', resize);
   if (window.IntersectionObserver) new IntersectionObserver(function (es) { demoOn = es[0].isIntersecting; if (demoOn && playing) startLoop(); }, { threshold: 0.05 }).observe(cv);
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)'), onScheme = function () { PAL = isDark() ? PAL_D : PAL_L; roKey = ''; readout(); draw(); };
+    if (mq.addEventListener) mq.addEventListener('change', onScheme); else if (mq.addListener) mq.addListener(onScheme);
+  }
   resize();
   setPlaying(playing);
 
   fetch('static/demo.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
     PLAYS = d.plays.map(unpack);
     document.getElementById('loading').hidden = true;
-    var labels = { 101: 'Play 101', 150: 'Play 150', 213: 'Play 213 · fast break' };
-    segButtons(document.getElementById('plays'), PLAYS.map(function (p, i) { return { label: labels[p.id] || ('Play ' + p.id), value: i }; }), 0, function (i) { loadPlay(i); if (!REDUCED) setPlaying(true); });
+    var labels = { 101: '101', 150: '150', 213: '213 · fast break' };
+    segButtons(document.getElementById('plays'), PLAYS.map(function (p, i) { return { label: labels[p.id] || String(p.id), value: i }; }), 0, function (i) { loadPlay(i); if (!REDUCED) setPlaying(true); });
     loadPlay(0);
     if (playing) startLoop();
     HP = PLAYS.filter(function (p) { return p.id === 213; })[0] || PLAYS[0];
     HP.heroKs = [];                                                   // top-scored hypotheses whose groups of three differ
     HP.byRank.slice(0, 8).forEach(function (k) { var g = HP.groups[9][k][1].join(','); if (HP.heroKs.length < 3 && HP.heroKs.every(function (j) { return HP.groups[9][j][1].join(',') !== g; })) HP.heroKs.push(k); });
+    HP.zoom = [];                                                     // per Euler step: zoom that keeps 85% of the 4 s states in view
+    for (var ti = 0; ti <= 10; ti++) {
+      var r = [];
+      for (var k = 0; k < K; k++) for (var a = 0; a < A; a++) { var i0 = sIdx(ti, k, a, F - 1); r.push(Math.max(Math.abs(HP.pos0[a][0] + HP.state[i0]) / 15, Math.abs(HP.pos0[a][1] + HP.state[i0 + 1]) / 8.2)); }
+      r.sort(function (p, q) { return p - q; });
+      HP.zoom.push(Math.min(1, 0.85 / r[Math.floor(r.length * 0.85)]));
+    }
+    HP.zoom[10] = 1;
+    for (var zi = 9; zi >= 0; zi--) HP.zoom[zi] = Math.min(HP.zoom[zi], HP.zoom[zi + 1]);
     drawFloor(heroClock()); startHero();
   }).catch(function () {
     document.getElementById('loading').textContent = 'The flow states could not be loaded. Reload the page to try again.';
